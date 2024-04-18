@@ -14,4 +14,45 @@ public class DespesasVO {
     private String nome;
     private Double valor;
     private String dataPagamento;
+    private String descricao;
+
+    public int getIdDespesa() {
+        return idDespesa;
+    }
+
+    public void setIdDespesa(int idDespesa) {
+        this.idDespesa = idDespesa;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Double getValor() {
+        return valor;
+    }
+
+    public void setValor(Double valor) {
+        this.valor = valor;
+    }
+
+    public String getDataPagamento() {
+        return dataPagamento;
+    }
+
+    public void setDataPagamento(String dataPagamento) {
+        this.dataPagamento = dataPagamento;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 }
