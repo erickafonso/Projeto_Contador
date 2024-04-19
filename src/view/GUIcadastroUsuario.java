@@ -5,6 +5,11 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
+import modelo.UsuariosVO;
+import servicos.UsuariosServicos;
+import servicos.ServicosFactory;
+
 /**
  *
  * @author 182310022
@@ -36,6 +41,8 @@ public class GUIcadastroUsuario extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jbtnSalvarUsuario = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jtfLoginUsuario = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,7 +52,7 @@ public class GUIcadastroUsuario extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("NOME");
+        jLabel1.setText("NOME COMPLETO");
 
         jLabel2.setText("EMAIL");
 
@@ -60,28 +67,39 @@ public class GUIcadastroUsuario extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setText("LOGIN");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(131, 131, 131)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addGap(53, 53, 53)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jpfSenhaUsuario)
-                    .addComponent(jtfNomeUsuario)
-                    .addComponent(jtfEmailUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                    .addComponent(jpfSenhaUsuarioConfirma))
-                .addContainerGap(115, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbtnSalvarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(225, 225, 225))
+                .addContainerGap(129, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel4))
+                            .addGap(53, 53, 53)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jpfSenhaUsuario)
+                                .addComponent(jtfEmailUsuario)
+                                .addComponent(jpfSenhaUsuarioConfirma, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbtnSalvarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(110, 110, 110)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jtfNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(118, 118, 118)
+                        .addComponent(jtfLoginUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(115, 115, 115))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,7 +108,11 @@ public class GUIcadastroUsuario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtfLoginUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfEmailUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
@@ -104,14 +126,14 @@ public class GUIcadastroUsuario extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addGap(60, 60, 60)
                 .addComponent(jbtnSalvarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(253, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnSalvarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSalvarUsuarioActionPerformed
-        // TODO add your handling code here:
+    cadastrar();        // TODO add your handling code here:
     }//GEN-LAST:event_jbtnSalvarUsuarioActionPerformed
 
     private void jpfSenhaUsuarioConfirmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpfSenhaUsuarioConfirmaActionPerformed
@@ -153,16 +175,57 @@ public class GUIcadastroUsuario extends javax.swing.JFrame {
             }
         });
     }
+    private void cadastrar() {
+        try {
+            UsuariosVO uVO = new UsuariosVO();
+            uVO.setNome(jtfNomeUsuario.getText());
+            uVO.setLogin(jtfLoginUsuario.getText());
+            uVO.setEmail(jtfEmailUsuario.getText());
+            
+            char[] Senha = jpfSenhaUsuario.getPassword();
+            String passwordString = new String(Senha);
+            
+            uVO.setSenha(passwordString);
+            
+            
 
+            
+
+            
+            
+            
+            /*
+        Temos que enviar o objeto pVO para o banco.
+        Assim a instrução sql da DAO ( ProdutoDAO) foi
+        copiada na ProdutoServicos, que tem uma cópia dos métodos
+             */
+            UsuariosServicos us = servicos.ServicosFactory.getUsuariosSevicos();
+
+            //Chamando o método
+            us.cadastrarUsuario(uVO);
+
+            //Retorno para o usuário
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Usuario Cadastrado com sucesso! ");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Erro! GUICadastroUsuario " + e.getMessage());
+        }//fecha o try catch
+
+    }//fim do método cadastrar
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JButton jbtnSalvarUsuario;
     private javax.swing.JPasswordField jpfSenhaUsuario;
     private javax.swing.JPasswordField jpfSenhaUsuarioConfirma;
     private javax.swing.JTextField jtfEmailUsuario;
+    private javax.swing.JTextField jtfLoginUsuario;
     private javax.swing.JTextField jtfNomeUsuario;
     // End of variables declaration//GEN-END:variables
 }

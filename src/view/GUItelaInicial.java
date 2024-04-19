@@ -16,6 +16,7 @@ public class GUItelaInicial extends javax.swing.JFrame {
      */
     public GUItelaInicial() {
         initComponents();
+        setExtendedState(MAXIMIZED_BOTH);
     }
 
     /**

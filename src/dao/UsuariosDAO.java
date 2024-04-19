@@ -27,10 +27,10 @@ public class UsuariosDAO {
             String sql = "insert into usuario values (null, ?, ?, ?, ?)";
             PreparedStatement pstm= con.prepareStatement(sql);
             pstm.setString(1, uVO.getNome());
-            pstm.setString(2, uVO.getEmail());
-            pstm.setString(3, uVO.getSenha());
-            pstm.setString(4, uVO.getLogin());
-
+            pstm.setString(2, uVO.getLogin());
+            pstm.setString(3, uVO.getEmail());
+            pstm.setString(4, uVO.getSenha());
+            
             
             
             pstm.execute();
@@ -57,9 +57,10 @@ public class UsuariosDAO {
                 UsuariosVO uVO=new UsuariosVO();
                 uVO.setIdUsuario(rs.getInt("idUsuario"));
                 uVO.setNome(rs.getString("nome"));
+                uVO.setLogin(rs.getString("login"));
                 uVO.setEmail(rs.getString("email"));
                 uVO.setSenha(rs.getString("senha"));    
-                uVO.setLogin(rs.getString("login"));
+                
                 
                 
                 usuariosList.add(uVO);
@@ -92,9 +93,10 @@ public class UsuariosDAO {
            while(rs.next()){
                uVO.setIdUsuario(rs.getInt("idUsuario"));
                 uVO.setNome(rs.getString("nome"));
+                uVO.setLogin(rs.getString("login"));
                 uVO.setEmail(rs.getString("email"));
                 uVO.setSenha(rs.getString("senha"));    
-                uVO.setLogin(rs.getString("login"));
+                
                
                /*aVO.setCodCli(rs.getInt("idcliente"));
                aVO.setNome(rs.getString("nome"));
@@ -146,8 +148,8 @@ public class UsuariosDAO {
             String sql;
             sql = "Update usuario set "
                     + "nome = ' " + uVO.getNome() + " ', "
-                    + "email = " + uVO.getEmail() + ", "
                     + "login= " + uVO.getLogin() + ", "
+                    + "email = " + uVO.getEmail() + ", "
                     + "senha = " + uVO.getSenha() + ", "
                     + " where idUsuario= " + uVO.getIdUsuario() + " ";
 

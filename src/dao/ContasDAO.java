@@ -24,9 +24,10 @@ public class ContasDAO {
             PreparedStatement pstm = con.prepareStatement(sql);
             pstm.setString(1, cVO.getNome());
             pstm.setDouble(2, cVO.getValor());
-            pstm.setString(3, cVO.getDataPagamento());
-            pstm.setString(4, cVO.getDataVencimento());
-            pstm.setString(5, cVO.getDescricao());
+            pstm.setString(3, cVO.getDescricao());
+            pstm.setString(4, cVO.getDataPagamento());
+            pstm.setString(5, cVO.getDataVencimento());
+            
 
             pstm.execute();
             pstm.close();
@@ -56,9 +57,10 @@ public class ContasDAO {
                 cVO.setNome(rs.getString("nome"));
 
                 cVO.setValor(rs.getDouble("valor"));
+                cVO.setDescricao(rs.getString("descricao"));  
                 cVO.setDataPagamento(rs.getString("dataPagamento"));
                 cVO.setDataPagamento(rs.getString("dataVencimento"));
-                cVO.setDescricao(rs.getString("descricao"));                
+                              
                 contasList.add(cVO);
             }//fim do while
             pstm.close();
@@ -88,9 +90,10 @@ public class ContasDAO {
                 cVO.setIdConta(rs.getInt("idConta"));
                 cVO.setNome(rs.getString("nome"));
                 cVO.setValor(rs.getDouble("valor"));
+                cVO.setDescricao(rs.getString("descricao"));
                 cVO.setDataPagamento(rs.getString("dataPagamento"));
                 cVO.setDataPagamento(rs.getString("dataVencimento"));
-                cVO.setDescricao(rs.getString("descricao"));  
+                  
                 contasList.add(cVO);
             }//fim do while
 
@@ -132,9 +135,9 @@ public class ContasDAO {
             sql = "Update conta set "
                     + "nome = ' " + cVO.getNome() + " ', "
                     + "valor = " + cVO.getValor() + ", "
+                    + "descricao = " + cVO.getDescricao() + ", "
                     + "dataPagamento = " + cVO.getDataPagamento() + ", "
                     + "dataVencimento = " + cVO.getDataVencimento() + ", "
-                    + "descricao = " + cVO.getDescricao() + ", "
                     + " where idConta= " + cVO.getIdConta() + " ";
 
             PreparedStatement pstm = con.prepareStatement(sql);

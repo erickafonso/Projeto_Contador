@@ -15,10 +15,15 @@ public class ServicosFactory {
     
     
 
-    private static DespesasServicos alunosServicos = new DespesasServicos();
+    private static DespesasServicos despesasServicos = new DespesasServicos();
 
-    public static DespesasServicos getAlunosSevicos() {
-        return alunosServicos;
+    public static DespesasServicos getDespesasSevicos() {
+        return despesasServicos;
     }//fim do método getClientesServicos
+    
+    private static UsuariosServicos usuariosServicos = new UsuariosServicos();
 
+    public static UsuariosServicos getUsuariosSevicos() {
+        return usuariosServicos;
+    }//fim do método getClientesServicos
 }//fecha a classe ServicosFactory
