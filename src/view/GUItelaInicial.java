@@ -5,6 +5,9 @@
  */
 package view;
 
+import com.sun.glass.events.KeyEvent;
+import javax.swing.event.InternalFrameEvent;
+import javax.swing.event.InternalFrameListener;
 /**
  *
  * @author 182310022
@@ -29,59 +32,103 @@ public class GUItelaInicial extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jdpAreaDeTrabalho = new javax.swing.JDesktopPane();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jmiConta = new javax.swing.JMenuItem();
+        jmiDespesa = new javax.swing.JMenuItem();
+        jmiCategoria = new javax.swing.JMenuItem();
+        jmiFormaPagamento = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
 
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Bem vindo(a) ");
+        javax.swing.GroupLayout jdpAreaDeTrabalhoLayout = new javax.swing.GroupLayout(jdpAreaDeTrabalho);
+        jdpAreaDeTrabalho.setLayout(jdpAreaDeTrabalhoLayout);
+        jdpAreaDeTrabalhoLayout.setHorizontalGroup(
+            jdpAreaDeTrabalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1121, Short.MAX_VALUE)
+        );
+        jdpAreaDeTrabalhoLayout.setVerticalGroup(
+            jdpAreaDeTrabalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 736, Short.MAX_VALUE)
+        );
 
-        jButton2.setText("CONTAS");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jMenu1.setText("Cadastrar");
+
+        jmiConta.setText("Conta");
+        jmiConta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jmiContaActionPerformed(evt);
             }
         });
+        jMenu1.add(jmiConta);
 
-        jButton3.setText("DESPESAS");
+        jmiDespesa.setText("Despesa");
+        jmiDespesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiDespesaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmiDespesa);
+
+        jmiCategoria.setText("Categoria");
+        jmiCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiCategoriaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmiCategoria);
+
+        jmiFormaPagamento.setText("Forma de Pagamento");
+        jMenu1.add(jmiFormaPagamento);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Relatórios");
+
+        jMenuItem5.setText("EM CONSTRUCAO");
+        jMenu2.add(jMenuItem5);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(327, 327, 327)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(160, 160, 160)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(338, Short.MAX_VALUE))
+            .addComponent(jdpAreaDeTrabalho)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(110, 110, 110)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(341, Short.MAX_VALUE))
+            .addComponent(jdpAreaDeTrabalho)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jmiContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiContaActionPerformed
+    GUIcadastroContas cc = new GUIcadastroContas();
+        jdpAreaDeTrabalho.add(cc);
+    cc.setVisible(true);             // TODO add your handling code here:
+
+    }//GEN-LAST:event_jmiContaActionPerformed
+
+    private void jmiDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiDespesaActionPerformed
+         oldGUIcadastroDespesa cd = new oldGUIcadastroDespesa();
+            jdpAreaDeTrabalho.add(cd);
+                cd.setVisible(true);          // TODO add your handling code here:
+    }//GEN-LAST:event_jmiDespesaActionPerformed
+
+    private void jmiCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCategoriaActionPerformed
+         GUIcadastroContas cc = new GUIcadastroContas();
+                cc.setVisible(true);  
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jmiCategoriaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -123,8 +170,14 @@ public class GUItelaInicial extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JDesktopPane jdpAreaDeTrabalho;
+    private javax.swing.JMenuItem jmiCategoria;
+    private javax.swing.JMenuItem jmiConta;
+    private javax.swing.JMenuItem jmiDespesa;
+    private javax.swing.JMenuItem jmiFormaPagamento;
     // End of variables declaration//GEN-END:variables
 }

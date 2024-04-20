@@ -17,7 +17,7 @@ primary key (FormaPagamento, Conta),
 foreign key (FormaPagamento) references formaPagamento(idFormaPagamento),
 foreign key (Conta) references conta(idConta)
 );
-
+drop table Conta_FormaPagamento;
 create table Conta_Categoria (
 Categoria int not null,
 Conta int not null,
@@ -25,6 +25,7 @@ primary key (Categoria, Conta),
 foreign key (Categoria) references categoria(idCategoria),
 foreign key (Conta) references conta(idConta)
 );
+drop table Conta_Categoria;
 
 create table Despesa_FormaPagamento (
 FormaPagamento int not null,
@@ -33,6 +34,8 @@ primary key (FormaPagamento, Despesa),
 foreign key (FormaPagamento) references formaPagamento(idFormaPagamento),
 foreign key (Despesa) references despesa(idDespesa)
 );
+drop table Despesa_FormaPagamento;
+drop table Despesa_Categoria;
 
 create table Despesa_Categoria (
 Categoria int not null,
@@ -69,3 +72,5 @@ login varChar(18)  not null,
 email varChar(30)  not null,
 senha varBinary(18)  not null
 );
+
+select * from usuario;
