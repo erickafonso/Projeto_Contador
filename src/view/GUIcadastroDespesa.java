@@ -5,6 +5,10 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
+import modelo.DespesasVO;
+import servicos.DespesasServicos;
+
 /**
  *
  * @author 182310022
@@ -188,7 +192,47 @@ public class GUIcadastroDespesa extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+        private void cadastrar() {
+        try {
+            DespesasVO dVO = new DespesasVO();
+            dVO.setNome(jtfNomeDespesa.getText());
+            
+            dVO.setValor(Double.parseDouble(jtfValorDespesa.getText()));
+            dVO.setDescricao(jtaDescricao.getText());
+            String data =  jtfAnoPagamentoDespesa.getText() +"-"+ jtfMesPagamentoDespesa.getText() +"-"+jtfDiaPagamentoDespesa.getText();
+            dVO.setDataPagamento(data);
+            String categoriaSelect = jcbCategoriaDespesa.getSelectedItem().toString();
+            //cVO.setCategoria(categoriaSelect);
+            String formapagamentoSelect = jcbFormaPagamentoDespesa.getSelectedItem().toString();
+            //cVO.setFormaPagamento(formapagamentoSelect);
 
+            
+
+            
+            
+            
+            /*
+        Temos que enviar o objeto pVO para o banco.
+        Assim a instrução sql da DAO ( ProdutoDAO) foi
+        copiada na ProdutoServicos, que tem uma cópia dos métodos
+             */
+            DespesasServicos ds = servicos.ServicosFactory.getDespesasSevicos();
+
+            //Chamando o método
+            ds.cadastrarDespesas(dVO);
+
+            //Retorno para o usuário
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Forma de Pagamento Cadastrado com sucesso! ");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Erro! GUICadastroConta " + e.getMessage());
+        }//fecha o try catch
+
+    }//fim do método cadastrar
     private void jtfNomeDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNomeDespesaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfNomeDespesaActionPerformed

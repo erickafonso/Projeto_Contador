@@ -205,9 +205,12 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
             
             cVO.setValor(Double.parseDouble(jtfValorConta.getText()));
             cVO.setDescricao(jtaDescricao.getText());
-            
-
-            
+            String data =  jtfAnoPagamentoConta.getText() +"-"+ jtfMesPagamentoConta.getText() +"-"+jtfDiaPagamentoConta.getText();
+            cVO.setDataPagamento(data);
+            String categoriaSelect = jcbCategoriaConta.getSelectedItem().toString();
+            //cVO.setCategoria(categoriaSelect);
+            String formapagamentoSelect = jcbFormaPagamentoConta.getSelectedItem().toString();
+            //cVO.setFormaPagamento(formapagamentoSelect);
 
             
 
@@ -231,7 +234,7 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(
                     null,
-                    "Erro! GUICadastroFormaPagamento " + e.getMessage());
+                    "Erro! GUICadastroConta " + e.getMessage());
         }//fecha o try catch
 
     }//fim do método cadastrar
@@ -240,6 +243,7 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtfNomeContaActionPerformed
 
     private void jbtCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtCadastrarActionPerformed
+        cadastrar();
         // TODO add your handling code here:
     }//GEN-LAST:event_jbtCadastrarActionPerformed
 
