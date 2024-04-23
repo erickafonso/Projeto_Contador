@@ -32,4 +32,20 @@ public class DAOFactory {
     public static UsuariosDAO getUsuariosDAO(){
         return usuariosDAO;
     }//fim do método ClientesDAO
+    
+    private static FormasPagamentosDAO formaspagamentosDAO = new FormasPagamentosDAO();
+    
+    //Fazendo uma cópia dos métodos da classe ClientesDAO e 
+    //disponibilizar para a classe que solicitar
+    public static FormasPagamentosDAO getFormasPagamentosDAO(){
+        return formaspagamentosDAO;
+    }//fim do método ClientesDAO
+    
+    private static CategoriasDAO categoriasDAO = new CategoriasDAO();
+    
+    //Fazendo uma cópia dos métodos da classe ClientesDAO e 
+    //disponibilizar para a classe que solicitar
+    public static CategoriasDAO getCategoriasDAO(){
+        return categoriasDAO;
+    }//fim do método ClientesDAO
 }//fecha a classe DAOFactory

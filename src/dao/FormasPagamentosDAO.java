@@ -20,7 +20,7 @@ import persistencia.ConexaoBanco;
  */
 public class FormasPagamentosDAO {
     
-    public void cadastrarCategoria(FormasPagamentosVO fVO) throws SQLException{
+    public void cadastrarFormaPagamento(FormasPagamentosVO fVO) throws SQLException{
         
         Connection con =new ConexaoBanco().getConexao();
         try{

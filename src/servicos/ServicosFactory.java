@@ -6,13 +6,23 @@ package servicos;
  */
 public class ServicosFactory {
 
-    private static ContasServicos cursoServicos = new ContasServicos();
+    private static ContasServicos contasServicos = new ContasServicos();
 
-    public static ContasServicos getCursoServicos() {
-        return cursoServicos;
+    public static ContasServicos getContasServicos() {
+        return contasServicos;
     }//fim do método getProdutoServicos
     
+    private static FormasPagamentosServicos formaspagamentosServicos = new FormasPagamentosServicos();
+
+    public static FormasPagamentosServicos getFormasPagamentosServicos() {
+        return formaspagamentosServicos;
+    }//fim do método getProdutoServicos
     
+    private static CategoriasServicos categoriasServicos = new CategoriasServicos();
+
+    public static CategoriasServicos getCategoriasServicos() {
+        return categoriasServicos;
+    }//fim do método getProdutoServicos
     
 
     private static DespesasServicos despesasServicos = new DespesasServicos();
