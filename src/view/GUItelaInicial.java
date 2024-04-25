@@ -84,6 +84,11 @@ public class GUItelaInicial extends javax.swing.JFrame {
         jMenu1.add(jmiCategoria);
 
         jmiFormaPagamento.setText("Forma de Pagamento");
+        jmiFormaPagamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiFormaPagamentoActionPerformed(evt);
+            }
+        });
         jMenu1.add(jmiFormaPagamento);
 
         jMenuBar1.add(jMenu1);
@@ -119,16 +124,25 @@ public class GUItelaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiContaActionPerformed
 
     private void jmiDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiDespesaActionPerformed
-         oldGUIcadastroDespesa cd = new oldGUIcadastroDespesa();
+         GUIcadastroDespesa cd = new GUIcadastroDespesa();
             jdpAreaDeTrabalho.add(cd);
                 cd.setVisible(true);          // TODO add your handling code here:
     }//GEN-LAST:event_jmiDespesaActionPerformed
 
     private void jmiCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCategoriaActionPerformed
-         GUIcadastroContas cc = new GUIcadastroContas();
-                cc.setVisible(true);  
+         GUIcadastroCategoria ccat = new GUIcadastroCategoria();
+            jdpAreaDeTrabalho.add(ccat);
+                ccat.setVisible(true);  
         // TODO add your handling code here:
     }//GEN-LAST:event_jmiCategoriaActionPerformed
+
+    private void jmiFormaPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiFormaPagamentoActionPerformed
+       GUIcadastroFormaPagamento fp = new GUIcadastroFormaPagamento();
+            jdpAreaDeTrabalho.add(fp);
+                fp.setVisible(true);
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_jmiFormaPagamentoActionPerformed
 
     /**
      * @param args the command line arguments

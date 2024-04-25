@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package modelo;
-
+import java.util.Date;
 /**
  *
  * @author 182310022
@@ -13,7 +13,7 @@ public class DespesasVO {
     private int idDespesa;
     private String nome;
     private Double valor;
-    private String dataPagamento;
+    private Date dataPagamento;
     private String descricao;
 
     public int getIdDespesa() {
@@ -40,13 +40,16 @@ public class DespesasVO {
         this.valor = valor;
     }
 
-    public String getDataPagamento() {
+    public Date getDataPagamento() {
         return dataPagamento;
     }
 
-    public void setDataPagamento(String dataPagamento) {
+    public void setDataPagamento(Date dataPagamento) {
         this.dataPagamento = dataPagamento;
     }
+
+    
+    
 
     public String getDescricao() {
         return descricao;

@@ -6,6 +6,8 @@
 
 package view;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import modelo.ContasVO;
 import servicos.ContasServicos;
@@ -35,13 +37,11 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
         jtfValorConta = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jtfDiaPagamentoConta = new javax.swing.JTextField();
+        jtfDataPagamentoConta = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jcbCategoriaConta = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jtfMesPagamentoConta = new javax.swing.JTextField();
-        jtfAnoPagamentoConta = new javax.swing.JTextField();
         jcbFormaPagamentoConta = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -131,12 +131,8 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
                                     .addGap(26, 26, 26)
                                     .addComponent(jButton2)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jtfDiaPagamentoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(19, 19, 19)
-                                .addComponent(jtfMesPagamentoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jtfAnoPagamentoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addComponent(jtfDataPagamentoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(266, 266, 266)
@@ -169,12 +165,10 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfDiaPagamentoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfDataPagamentoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(jtfMesPagamentoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfAnoPagamentoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -205,8 +199,13 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
             
             cVO.setValor(Double.parseDouble(jtfValorConta.getText()));
             cVO.setDescricao(jtaDescricao.getText());
-            String data =  jtfAnoPagamentoConta.getText() +"-"+ jtfMesPagamentoConta.getText() +"-"+jtfDiaPagamentoConta.getText();
+            
+            
+            String dataCrua = jtfDataPagamentoConta.getText();
+            SimpleDateFormat dataFormatada = new SimpleDateFormat("dd/MM/yyyy");
+            Date data = dataFormatada.parse(dataCrua);
             cVO.setDataPagamento(data);
+
             String categoriaSelect = jcbCategoriaConta.getSelectedItem().toString();
             //cVO.setCategoria(categoriaSelect);
             String formapagamentoSelect = jcbFormaPagamentoConta.getSelectedItem().toString();
@@ -270,9 +269,7 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> jcbFormaPagamentoConta;
     private javax.swing.JTextArea jtaDescricao;
     private javax.swing.JToggleButton jtbPago;
-    private javax.swing.JTextField jtfAnoPagamentoConta;
-    private javax.swing.JTextField jtfDiaPagamentoConta;
-    private javax.swing.JTextField jtfMesPagamentoConta;
+    private javax.swing.JTextField jtfDataPagamentoConta;
     private javax.swing.JTextField jtfNomeConta;
     private javax.swing.JTextField jtfValorConta;
     // End of variables declaration//GEN-END:variables

@@ -1,5 +1,5 @@
 package dao;
-
+import java.sql.Date;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,7 +16,7 @@ public class DespesasDAO {
 
     public void cadastrarDespesa(DespesasVO dVO) throws SQLException {
         Connection con = new ConexaoBanco().getConexao();
-
+        Date sqlDate = new java.sql.Date(dVO.getDataPagamento().getTime());
         try {
             String sql = "INSERT INTO despesa VALUES (null, ?, ?, ?, ? )";
             //String sql = "INSERT INTO curso (nome , duracao , valor ) VALUES(?,?,?) ";
@@ -24,9 +24,10 @@ public class DespesasDAO {
             PreparedStatement pstm = con.prepareStatement(sql);
             pstm.setString(1, dVO.getNome());
             pstm.setDouble(2, dVO.getValor());
-            pstm.setString(3, dVO.getDataPagamento());
-            pstm.setString(4, dVO.getDescricao());
 
+            pstm.setString(3, dVO.getDescricao());
+            pstm.setDate(4, sqlDate);
+            
             pstm.execute();
             pstm.close();
 
@@ -55,7 +56,7 @@ public class DespesasDAO {
                 dVO.setNome(rs.getString("nome"));
 
                 dVO.setValor(rs.getDouble("valor"));
-                dVO.setDataPagamento(rs.getString("dataPagamento"));
+                dVO.setDataPagamento(rs.getDate("dataPagamento"));
                 dVO.setDescricao(rs.getString("descricao"));                
                 despesasList.add(dVO);
             }//fim do while
@@ -86,7 +87,7 @@ public class DespesasDAO {
                 dVO.setIdDespesa(rs.getInt("idDespesa"));
                 dVO.setNome(rs.getString("nome"));
                 dVO.setValor(rs.getDouble("valor"));
-                dVO.setDataPagamento(rs.getString("dataPagamento"));
+                dVO.setDataPagamento(rs.getDate("dataPagamento"));
                 dVO.setDescricao(rs.getString("descricao"));  
                 despesaList.add(dVO);
             }//fim do while

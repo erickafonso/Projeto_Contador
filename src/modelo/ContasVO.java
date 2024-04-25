@@ -5,6 +5,8 @@
  */
 package modelo;
 
+import java.util.Date;
+
 /**
  *
  * @author 182310022
@@ -13,16 +15,18 @@ public class ContasVO {
     private int idConta;
     private String nome;
     private Double valor;
-    private String dataPagamento;
-    private String dataVencimento;
+    private Date dataPagamento;
+    private Date dataVencimento;
 
-    public String getDataVencimento() {
+    public Date getDataVencimento() {
         return dataVencimento;
     }
 
-    public void setDataVencimento(String dataVencimento) {
+    public void setDataVencimento(Date dataVencimento) {
         this.dataVencimento = dataVencimento;
     }
+
+
 
     public int getIdConta() {
         return idConta;
@@ -48,13 +52,15 @@ public class ContasVO {
         this.valor = valor;
     }
 
-    public String getDataPagamento() {
+    public Date getDataPagamento() {
         return dataPagamento;
     }
 
-    public void setDataPagamento(String dataPagamento) {
+    public void setDataPagamento(Date dataPagamento) {
         this.dataPagamento = dataPagamento;
     }
+
+
 
     public String getDescricao() {
         return descricao;

@@ -2,7 +2,7 @@ create database contador;
 use contador;
 
 create table conta (
-idConta int  primary key unique not null,
+idConta int  primary key unique auto_increment not null,
 nome varChar(18)  not null,
 valor double not null,
 descricao varChar(18),
@@ -46,7 +46,7 @@ foreign key (Despesa) references despesa(idDespesa)
 );
 
 create table despesa (
-idDespesa int  primary key unique not null,
+idDespesa int  primary key unique auto_increment not null,
 nome varChar(18)  not null,
 valor double not null,
 descricao varChar(18),
@@ -54,23 +54,28 @@ dataPagamento Date not null
 );
 
 create table categoria (
-idCategoria int  primary key unique not null,
-nome varChar(20)  not null
+idCategoria int  primary key unique auto_increment not null,
+nome varChar(20)  not null unique
 
 );
+drop table usuario;
+drop table conta;
+drop table despesa;
+drop table categoria;
+drop table formapagamento;
 
 create table formaPagamento (
-idFormaPagamento int  primary key unique not null,
-nome varChar(20)  not null
+idFormaPagamento int  primary key unique auto_increment not null,
+nome varChar(20)  not null unique
 
 );
 
 create table usuario (
-idUsuario int  primary key unique not null,
+idUsuario int  primary key unique auto_increment not null,
 nome varChar(18)  not null,
 login varChar(18)  not null,
 email varChar(30)  not null,
 senha varBinary(18)  not null
 );
 
-select * from usuario;
+select * from formapagamento;

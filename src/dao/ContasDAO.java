@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,7 +17,8 @@ public class ContasDAO {
 
     public void cadastrarConta(ContasVO cVO) throws SQLException {
         Connection con = new ConexaoBanco().getConexao();
-
+        Date sqlDate = new java.sql.Date(cVO.getDataPagamento().getTime());
+        Date sqlDate2 = new java.sql.Date(cVO.getDataVencimento().getTime());
         try {
             String sql = "INSERT INTO conta VALUES (null, ?, ?, ?, ?, ? )";
             //String sql = "INSERT INTO curso (nome , duracao , valor ) VALUES(?,?,?) ";
@@ -25,8 +27,8 @@ public class ContasDAO {
             pstm.setString(1, cVO.getNome());
             pstm.setDouble(2, cVO.getValor());
             pstm.setString(3, cVO.getDescricao());
-            pstm.setString(4, cVO.getDataPagamento());
-            pstm.setString(5, cVO.getDataVencimento());
+            pstm.setDate(4, sqlDate);
+            pstm.setDate(5, sqlDate2);
             
 
             pstm.execute();
@@ -58,8 +60,8 @@ public class ContasDAO {
 
                 cVO.setValor(rs.getDouble("valor"));
                 cVO.setDescricao(rs.getString("descricao"));  
-                cVO.setDataPagamento(rs.getString("dataPagamento"));
-                cVO.setDataPagamento(rs.getString("dataVencimento"));
+                cVO.setDataPagamento(rs.getDate("dataPagamento"));
+                cVO.setDataVencimento(rs.getDate("dataVencimento"));
                               
                 contasList.add(cVO);
             }//fim do while
@@ -91,8 +93,8 @@ public class ContasDAO {
                 cVO.setNome(rs.getString("nome"));
                 cVO.setValor(rs.getDouble("valor"));
                 cVO.setDescricao(rs.getString("descricao"));
-                cVO.setDataPagamento(rs.getString("dataPagamento"));
-                cVO.setDataPagamento(rs.getString("dataVencimento"));
+                cVO.setDataPagamento(rs.getDate("dataPagamento"));
+                cVO.setDataPagamento(rs.getDate("dataVencimento"));
                   
                 contasList.add(cVO);
             }//fim do while
