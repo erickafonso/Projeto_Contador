@@ -78,4 +78,4 @@ email varChar(30)  not null,
 senha varBinary(18)  not null
 );
 
-select * from formapagamento;
+select * from formaPagamento order by nome;

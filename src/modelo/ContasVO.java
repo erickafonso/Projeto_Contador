@@ -17,6 +17,24 @@ public class ContasVO {
     private Double valor;
     private Date dataPagamento;
     private Date dataVencimento;
+    private int categoria;
+    private int formaPagamento;
+
+    public int getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(int categoria) {
+        this.categoria = categoria;
+    }
+
+    public int getFormaPagamento() {
+        return formaPagamento;
+    }
+
+    public void setFormaPagamento(int formaPagamento) {
+        this.formaPagamento = formaPagamento;
+    }
 
     public Date getDataVencimento() {
         return dataVencimento;

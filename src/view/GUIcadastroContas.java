@@ -6,11 +6,16 @@
 
 package view;
 
+import dao.CategoriasDAO;
+import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Vector;
 import javax.swing.JOptionPane;
 import modelo.ContasVO;
 import servicos.ContasServicos;
+import dao.FormasPagamentosDAO;
+import java.sql.SQLException;
 
 /**
  *
@@ -21,6 +26,8 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
     /** Creates new form GUIcadastroDespesa */
     public GUIcadastroContas() {
         initComponents();
+        PreencherComboBoxFormaPagamento();
+        PreencherComboBoxCategoria();
     }
 
     /** This method is called from within the constructor to
@@ -52,6 +59,7 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jbtCadastrar = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         jTextField1.setText("jTextField1");
 
@@ -71,13 +79,13 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
 
         jLabel3.setText("DATA DE PAGAMENTO:");
 
-        jcbCategoriaConta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbCategoriaConta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
 
         jLabel4.setText("CATEGORIA");
 
         jButton1.setText("+");
 
-        jcbFormaPagamentoConta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbFormaPagamentoConta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
 
         jLabel5.setText("FORMA DE PAGAMENTO");
 
@@ -102,6 +110,13 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton3.setText("GET");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -121,15 +136,18 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
                         .addGap(49, 49, 49)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtbPago)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jcbCategoriaConta, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(26, 26, 26)
-                                    .addComponent(jButton1))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jcbFormaPagamentoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(26, 26, 26)
-                                    .addComponent(jButton2)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jcbCategoriaConta, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(26, 26, 26)
+                                        .addComponent(jButton1))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jcbFormaPagamentoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(26, 26, 26)
+                                        .addComponent(jButton2)))
+                                .addGap(91, 91, 91)
+                                .addComponent(jButton3))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jtfDataPagamentoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -148,7 +166,7 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(405, 405, 405)
                         .addComponent(jbtCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(383, Short.MAX_VALUE))
+                .addContainerGap(261, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,7 +192,8 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jcbCategoriaConta, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3))
                 .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jcbFormaPagamentoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -206,8 +225,13 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
             Date data = dataFormatada.parse(dataCrua);
             cVO.setDataPagamento(data);
 
+            
             String categoriaSelect = jcbCategoriaConta.getSelectedItem().toString();
-            //cVO.setCategoria(categoriaSelect);
+            CategoriasDAO cDAO = new CategoriasDAO();
+            ResultSet rsc = cDAO.retornaId(categoriaSelect);
+            //cVO.setCategoria(rsc.getInt(1));
+            System.out.println(rsc.getInt(0));
+            
             String formapagamentoSelect = jcbFormaPagamentoConta.getSelectedItem().toString();
             //cVO.setFormaPagamento(formapagamentoSelect);
 
@@ -237,6 +261,66 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
         }//fecha o try catch
 
     }//fim do método cadastrar
+    
+        //Variável para armazenar o idperfil que é chave estrangeira na tabela login
+    public void getBox() throws SQLException{
+        try {        
+        String categoriaSelect = jcbCategoriaConta.getSelectedItem().toString();
+            CategoriasDAO cDAO = new CategoriasDAO();
+            ResultSet rsc = cDAO.retornaId(categoriaSelect);
+            //cVO.setCategoria(rsc.getInt(1));
+            System.out.println(rsc.getInt(1));
+    } catch(SQLException e) {
+            throw new SQLException("Erro ao Alterar Categoria! " + e.getMessage());
+        }//fim do try 
+    }
+            
+    Vector<Integer> codFormaPagamento = new Vector<Integer>();
+    Vector<Integer> codCategoria = new Vector<Integer>();
+    
+    
+    public void PreencherComboBoxFormaPagamento(){
+        
+        try {
+            FormasPagamentosDAO fpDAO = new FormasPagamentosDAO();
+            ResultSet rs = fpDAO.listarPerfil();
+            
+            while(rs.next()){
+
+                codFormaPagamento.addElement(rs.getInt(1));
+                jcbFormaPagamentoConta.addItem(rs.getString(2));                
+            }//fim do while
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Erro GuiLogin.restaurarPerfilComboBox " + e.getMessage());
+        }//fim do try catch
+        
+    }//fim do método restaurarPerfilComboBox
+    
+    public void PreencherComboBoxCategoria(){
+        
+        try {
+            CategoriasDAO cDAO = new CategoriasDAO();
+            ResultSet rs = cDAO.listarPerfil();
+            
+            while(rs.next()){
+
+                codCategoria.addElement(rs.getInt(1));
+                jcbCategoriaConta.addItem(rs.getString(2));                
+            }//fim do while
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Erro GuiLogin.restaurarPerfilComboBox " + e.getMessage());
+        }//fim do try catch
+        
+    }//fim do método restaurarPerfilComboBox
+    
+    
+ 
     private void jtfNomeContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNomeContaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfNomeContaActionPerformed
@@ -246,6 +330,11 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jbtCadastrarActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+getBox();
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -254,6 +343,7 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

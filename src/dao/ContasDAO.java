@@ -20,7 +20,7 @@ public class ContasDAO {
         Date sqlDate = new java.sql.Date(cVO.getDataPagamento().getTime());
         Date sqlDate2 = new java.sql.Date(cVO.getDataVencimento().getTime());
         try {
-            String sql = "INSERT INTO conta VALUES (null, ?, ?, ?, ?, ? )";
+            String sql = "INSERT INTO conta VALUES (null, ?, ?, ?, ?, ?, ?, ? )";
             //String sql = "INSERT INTO curso (nome , duracao , valor ) VALUES(?,?,?) ";
 
             PreparedStatement pstm = con.prepareStatement(sql);
@@ -29,6 +29,8 @@ public class ContasDAO {
             pstm.setString(3, cVO.getDescricao());
             pstm.setDate(4, sqlDate);
             pstm.setDate(5, sqlDate2);
+            pstm.setInt(6, cVO.getCategoria());
+            pstm.setInt(7, cVO.getFormaPagamento());
             
 
             pstm.execute();
@@ -62,6 +64,8 @@ public class ContasDAO {
                 cVO.setDescricao(rs.getString("descricao"));  
                 cVO.setDataPagamento(rs.getDate("dataPagamento"));
                 cVO.setDataVencimento(rs.getDate("dataVencimento"));
+                cVO.setCategoria(rs.getInt("categoria"));
+                cVO.setFormaPagamento(rs.getInt("formaPagamento"));
                               
                 contasList.add(cVO);
             }//fim do while
@@ -95,7 +99,8 @@ public class ContasDAO {
                 cVO.setDescricao(rs.getString("descricao"));
                 cVO.setDataPagamento(rs.getDate("dataPagamento"));
                 cVO.setDataPagamento(rs.getDate("dataVencimento"));
-                  
+                cVO.setCategoria(rs.getInt("categoria"));
+                cVO.setFormaPagamento(rs.getInt("formaPagamento"));  
                 contasList.add(cVO);
             }//fim do while
 
@@ -114,7 +119,7 @@ public class ContasDAO {
         Connection con = new ConexaoBanco().getConexao();
 
         try {
-            String sql = "delete from conta where idDespesa = ?";
+            String sql = "delete from conta where idConta = ?";
             //String sql = "delete from curso where idCurso = ?";
             PreparedStatement pstm = con.prepareStatement(sql);
 
@@ -140,6 +145,8 @@ public class ContasDAO {
                     + "descricao = " + cVO.getDescricao() + ", "
                     + "dataPagamento = " + cVO.getDataPagamento() + ", "
                     + "dataVencimento = " + cVO.getDataVencimento() + ", "
+                    + "categoria = " + cVO.getCategoria() + ", "
+                    + "formaPagamento = " + cVO.getFormaPagamento() + ", "
                     + " where idConta= " + cVO.getIdConta() + " ";
 
             PreparedStatement pstm = con.prepareStatement(sql);

@@ -15,6 +15,25 @@ public class DespesasVO {
     private Double valor;
     private Date dataPagamento;
     private String descricao;
+    private int categoria;
+    private int formaPagamento;
+
+    public int getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(int categoria) {
+        this.categoria = categoria;
+    }
+
+    public int getFormaPagamento() {
+        return formaPagamento;
+    }
+
+    public void setFormaPagamento(int formaPagamento) {
+        this.formaPagamento = formaPagamento;
+    }
+
 
     public int getIdDespesa() {
         return idDespesa;

@@ -154,4 +154,39 @@ public class CategoriasDAO {
         }//fim do Try catch finally
     }//fecha o método alterarProduto
     
+       public ResultSet listarPerfil(){
+       Connection con = new ConexaoBanco().getConexao();
+       
+       try {
+           String sql = "Select * from categoria order by nome; ";
+           PreparedStatement pstm = con.prepareStatement(sql);
+           
+           return pstm.executeQuery();
+           
+       } catch (SQLException se) {
+           JOptionPane.showMessageDialog(
+                   null,
+                   "Erro categoriaDAO.listarPerfil " + se.getMessage());
+           return null;
+       }//fim do try catch
+       
+   }//fim do método listarPerfil
+       
+             public ResultSet retornaId(String nome){
+       Connection con = new ConexaoBanco().getConexao();
+       
+       try {
+           String sql = "Select idCategoria from categoria where nome= ?; ";
+           PreparedStatement pstm = con.prepareStatement(sql);
+           pstm.setString(1, nome);
+           return pstm.executeQuery();
+           
+       } catch (SQLException se) {
+           JOptionPane.showMessageDialog(
+                   null,
+                   "Erro categoriaDAO.retornaID " + se.getMessage());
+           return null;
+       }//fim do try catch
+       
+   }//fim do método listarPerfil
 }

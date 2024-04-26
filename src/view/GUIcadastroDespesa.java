@@ -5,6 +5,9 @@
  */
 package view;
 
+import dao.CategoriasDAO;
+import dao.FormasPagamentosDAO;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import modelo.DespesasVO;
 import servicos.DespesasServicos;
@@ -12,6 +15,7 @@ import servicos.DespesasServicos;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
 import java.util.Date;
+import java.util.Vector;
 
 /**
  *
@@ -24,6 +28,8 @@ public class GUIcadastroDespesa extends javax.swing.JInternalFrame {
      */
     public GUIcadastroDespesa() {
         initComponents();
+        PreencherComboBoxFormaPagamento();
+        PreencherComboBoxCategoria();
     }
 
     /**
@@ -247,6 +253,46 @@ public class GUIcadastroDespesa extends javax.swing.JInternalFrame {
         }//fecha o try catch
 
     }//fim do método cadastrar
+        
+        public void PreencherComboBoxFormaPagamento(){
+        
+        try {
+            FormasPagamentosDAO fpDAO = new FormasPagamentosDAO();
+            ResultSet rs = fpDAO.listarPerfil();
+            
+            while(rs.next()){
+                Vector<Integer> codFormaPagamento = new Vector<Integer>();
+                codFormaPagamento.addElement(rs.getInt(1));
+                jcbFormaPagamentoDespesa.addItem(rs.getString(2));                
+            }//fim do while
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Erro GuiLogin.restaurarPerfilComboBox " + e.getMessage());
+        }//fim do try catch
+        
+    }//fim do método restaurarPerfilComboBox
+    
+    public void PreencherComboBoxCategoria(){
+        
+        try {
+            CategoriasDAO cDAO = new CategoriasDAO();
+            ResultSet rs = cDAO.listarPerfil();
+            
+            while(rs.next()){
+                Vector<Integer> codCategoria = new Vector<Integer>();
+                codCategoria.addElement(rs.getInt(1));
+                jcbCategoriaDespesa.addItem(rs.getString(2));                
+            }//fim do while
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Erro GuiLogin.restaurarPerfilComboBox " + e.getMessage());
+        }//fim do try catch
+        
+    }//fim do método restaurarPerfilComboBox
     private void jtfNomeDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNomeDespesaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfNomeDespesaActionPerformed

@@ -18,7 +18,7 @@ public class DespesasDAO {
         Connection con = new ConexaoBanco().getConexao();
         Date sqlDate = new java.sql.Date(dVO.getDataPagamento().getTime());
         try {
-            String sql = "INSERT INTO despesa VALUES (null, ?, ?, ?, ? )";
+            String sql = "INSERT INTO despesa VALUES (null, ?, ?, ?, ?, ?, ? )";
             //String sql = "INSERT INTO curso (nome , duracao , valor ) VALUES(?,?,?) ";
 
             PreparedStatement pstm = con.prepareStatement(sql);
@@ -27,6 +27,8 @@ public class DespesasDAO {
 
             pstm.setString(3, dVO.getDescricao());
             pstm.setDate(4, sqlDate);
+            pstm.setInt(5, dVO.getCategoria());
+            pstm.setInt(6, dVO.getFormaPagamento());
             
             pstm.execute();
             pstm.close();
@@ -58,6 +60,8 @@ public class DespesasDAO {
                 dVO.setValor(rs.getDouble("valor"));
                 dVO.setDataPagamento(rs.getDate("dataPagamento"));
                 dVO.setDescricao(rs.getString("descricao"));                
+                dVO.setCategoria(rs.getInt("categoria"));                
+                dVO.setFormaPagamento(rs.getInt("formaPagamento"));                
                 despesasList.add(dVO);
             }//fim do while
             pstm.close();
@@ -88,7 +92,9 @@ public class DespesasDAO {
                 dVO.setNome(rs.getString("nome"));
                 dVO.setValor(rs.getDouble("valor"));
                 dVO.setDataPagamento(rs.getDate("dataPagamento"));
-                dVO.setDescricao(rs.getString("descricao"));  
+                dVO.setDescricao(rs.getString("descricao"));
+                dVO.setCategoria(rs.getInt("categoria"));
+                dVO.setFormaPagamento(rs.getInt("formaPagamento"));
                 despesaList.add(dVO);
             }//fim do while
 
@@ -132,6 +138,8 @@ public class DespesasDAO {
                     + "valor = " + dVO.getValor() + ", "
                     + "dataPagamento = " + dVO.getDataPagamento() + ", "
                     + "descricao = " + dVO.getDescricao() + ", "
+                    + "categoria = " + dVO.getCategoria() + ", "
+                    + "formaPagamento = " + dVO.getFormaPagamento() + ", "
                     + " where idDespesa = " + dVO.getIdDespesa() + " ";
 
             PreparedStatement pstm = con.prepareStatement(sql);

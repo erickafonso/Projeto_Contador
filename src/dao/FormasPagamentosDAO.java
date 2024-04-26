@@ -154,4 +154,21 @@ public class FormasPagamentosDAO {
         }//fim do Try catch finally
     }//fecha o método alterarProduto
     
+       public ResultSet listarPerfil(){
+       Connection con = new ConexaoBanco().getConexao();
+       
+       try {
+           String sql = "Select * from formaPagamento order by nome; ";
+           PreparedStatement pstm = con.prepareStatement(sql);
+           
+           return pstm.executeQuery();
+           
+       } catch (SQLException se) {
+           JOptionPane.showMessageDialog(
+                   null,
+                   "Erro formaPagamentoDAO.listarPerfil " + se.getMessage());
+           return null;
+       }//fim do try catch
+       
+   }//fim do método listarPerfil
 }
