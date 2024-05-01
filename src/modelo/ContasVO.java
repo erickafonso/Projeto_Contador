@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package modelo;
-
+import java.lang.Integer;
 import java.util.Date;
 
 /**
@@ -17,12 +17,9 @@ public class ContasVO {
     private Double valor;
     private Date dataPagamento;
     private Date dataVencimento;
+    //private int categoria;
+    //private int formaPagamento;
     private int categoria;
-    private int formaPagamento;
-
-    public int getCategoria() {
-        return categoria;
-    }
 
     public void setCategoria(int categoria) {
         this.categoria = categoria;
@@ -35,7 +32,13 @@ public class ContasVO {
     public void setFormaPagamento(int formaPagamento) {
         this.formaPagamento = formaPagamento;
     }
+    private int formaPagamento;
+    
+    public int getCategoria() {
+        return categoria;
+    }
 
+ 
     public Date getDataVencimento() {
         return dataVencimento;
     }

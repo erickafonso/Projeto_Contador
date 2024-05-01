@@ -7,7 +7,10 @@ nome varChar(18)  not null,
 valor double not null,
 descricao varChar(18),
 dataPagamento Date,
-dataVencimento Date not null
+dataVencimento Date not null,
+categoria int not null,
+formaPagamento int not null
+
 );
 
 create table Conta_FormaPagamento (
@@ -50,11 +53,15 @@ idDespesa int  primary key unique auto_increment not null,
 nome varChar(18)  not null,
 valor double not null,
 descricao varChar(18),
-dataPagamento Date not null
+dataPagamento Date not null,
+categoria int not null,
+formaPagamento int not null
 );
 
 create table categoria (
+
 idCategoria int  primary key unique auto_increment not null,
+
 nome varChar(20)  not null unique
 
 );
@@ -79,3 +86,24 @@ senha varBinary(18)  not null
 );
 
 select * from formaPagamento order by nome;
+
+delete from categoria where idCategoria =3;
+select * from formapagamento;
+drop table conta;
+INSERT INTO categoria(idCategoria, nome) values (
+0, "sem categoria"
+);
+INSERT INTO categoria(idCategoria, nome) values (
+0, "carro"
+);
+INSERT INTO formaPagamento(idFormaPagamento, nome) values (
+0, "sem categoria"
+);
+INSERT INTO formaPagamento(idFormaPagamento, nome) values (
+0, "cartao"
+);
+
+
+
+
+describe conta;

@@ -16,6 +16,13 @@ import modelo.ContasVO;
 import servicos.ContasServicos;
 import dao.FormasPagamentosDAO;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JDesktopPane;
+import javax.swing.JInternalFrame;
+import modelo.CategoriasVO;
+import modelo.FormasPagamentosVO;
 
 /**
  *
@@ -48,7 +55,7 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jcbCategoriaConta = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jbtnOpenCategoria = new javax.swing.JButton();
         jcbFormaPagamentoConta = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -60,6 +67,9 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         jbtCadastrar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jtfDataVencimentoConta = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
 
@@ -83,7 +93,12 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
 
         jLabel4.setText("CATEGORIA");
 
-        jButton1.setText("+");
+        jbtnOpenCategoria.setText("+");
+        jbtnOpenCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnOpenCategoriaActionPerformed(evt);
+            }
+        });
 
         jcbFormaPagamentoConta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
 
@@ -117,6 +132,10 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel9.setText("DATA DE PAGAMENTO:");
+
+        jLabel10.setText("DD/MM/AAAA");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -127,42 +146,52 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
                         .addGap(212, 212, 212)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(5, 5, 5)
-                                .addComponent(jLabel3))
-                            .addComponent(jLabel6)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel5)))
-                        .addGap(49, 49, 49)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtbPago)
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jcbCategoriaConta, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(26, 26, 26)
-                                        .addComponent(jButton1))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jcbFormaPagamentoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(26, 26, 26)
-                                        .addComponent(jButton2)))
-                                .addGap(91, 91, 91)
-                                .addComponent(jButton3))
+                                    .addComponent(jLabel6)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel4)
+                                        .addComponent(jLabel5)))
+                                .addGap(49, 49, 49)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtbPago)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(jcbCategoriaConta, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(26, 26, 26)
+                                                .addComponent(jbtnOpenCategoria))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(jcbFormaPagamentoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(26, 26, 26)
+                                                .addComponent(jButton2)))
+                                        .addGap(91, 91, 91)
+                                        .addComponent(jButton3))))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jtfDataPagamentoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(266, 266, 266)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel7))
-                        .addGap(55, 55, 55)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1)
-                            .addComponent(jtfValorConta)
-                            .addComponent(jtfNomeConta, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(49, 49, 49)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel7))
+                                .addGap(55, 55, 55)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jScrollPane1)
+                                    .addComponent(jtfValorConta)
+                                    .addComponent(jtfNomeConta, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addGap(49, 49, 49)
+                                        .addComponent(jtfDataPagamentoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel9)
+                                        .addGap(49, 49, 49)
+                                        .addComponent(jtfDataVencimentoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(405, 405, 405)
                         .addComponent(jbtCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -171,7 +200,7 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfNomeConta, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -183,16 +212,21 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfDataPagamentoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel8))
-                .addGap(55, 55, 55)
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtfDataVencimentoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10))
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jcbCategoriaConta, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtnOpenCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3))
                 .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -228,12 +262,21 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
             
             String categoriaSelect = jcbCategoriaConta.getSelectedItem().toString();
             CategoriasDAO cDAO = new CategoriasDAO();
-            ResultSet rsc = cDAO.retornaId(categoriaSelect);
+            ArrayList<CategoriasVO> categoriasList  = cDAO.buscarCategoria();
+            int categoriaID = getIdCategoria(categoriasList , categoriaSelect);
+            System.out.println("");
+            cVO.setCategoria(categoriaID);
+            
+           
             //cVO.setCategoria(rsc.getInt(1));
-            System.out.println(rsc.getInt(0));
+            //System.out.println(rsc.getInt(0));
             
             String formapagamentoSelect = jcbFormaPagamentoConta.getSelectedItem().toString();
-            //cVO.setFormaPagamento(formapagamentoSelect);
+            FormasPagamentosDAO fpDAO = new FormasPagamentosDAO();
+            ArrayList<FormasPagamentosVO> formasPagamentosList  = fpDAO.buscarFormaPagamento();
+            
+            int formaPagamentoID = getIdFormaPagamento(formasPagamentosList, formapagamentoSelect);
+            cVO.setFormaPagamento(formaPagamentoID);
 
             
 
@@ -263,20 +306,31 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
     }//fim do método cadastrar
     
         //Variável para armazenar o idperfil que é chave estrangeira na tabela login
-    public void getBox() throws SQLException{
-        try {        
-        String categoriaSelect = jcbCategoriaConta.getSelectedItem().toString();
-            CategoriasDAO cDAO = new CategoriasDAO();
-            ResultSet rsc = cDAO.retornaId(categoriaSelect);
-            //cVO.setCategoria(rsc.getInt(1));
-            System.out.println(rsc.getInt(1));
-    } catch(SQLException e) {
-            throw new SQLException("Erro ao Alterar Categoria! " + e.getMessage());
-        }//fim do try 
-    }
+    public int getIdCategoria(ArrayList<CategoriasVO> list , String nome){
+        int numero = 1;
+        for(CategoriasVO element : list ){
+                    if(element.getNome().equals(nome)){
+                        numero = element.getIdCategoria();
+                    }
+                }
+        
+    return numero; }
+    
+    public int getIdFormaPagamento(ArrayList<FormasPagamentosVO> list , String nome){
+        int numero = 1;
+        for(FormasPagamentosVO element : list ){
+                    if(element.getNome().equals(nome)){
+                        numero = element.getIdFormaPagamento();
+                    }
+                }
+        
+    return numero; }
             
-    Vector<Integer> codFormaPagamento = new Vector<Integer>();
+    Vector<FormasPagamentosVO> codFormaPagamento = new Vector<FormasPagamentosVO>();
     Vector<Integer> codCategoria = new Vector<Integer>();
+
+   
+        
     
     
     public void PreencherComboBoxFormaPagamento(){
@@ -286,8 +340,11 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
             ResultSet rs = fpDAO.listarPerfil();
             
             while(rs.next()){
-
-                codFormaPagamento.addElement(rs.getInt(1));
+                FormasPagamentosVO fpVO = new FormasPagamentosVO();
+                fpVO.setIdFormaPagamento(rs.getInt(1));
+                fpVO.setNome(rs.getString(2));
+                codFormaPagamento.addElement(fpVO);
+                //codFormaPagamento.addElement(rs.getInt(1));
                 jcbFormaPagamentoConta.addItem(rs.getString(2));                
             }//fim do while
             
@@ -331,9 +388,39 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbtCadastrarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-getBox();
-        
+     String categoriaSelect = jcbFormaPagamentoConta.getSelectedItem().toString();
+        System.out.println(categoriaSelect);
+        FormasPagamentosDAO cDAO = new FormasPagamentosDAO();
+            ArrayList<FormasPagamentosVO> categoriasList;
+        try {
+            categoriasList = cDAO.buscarFormaPagamento();
+            int categoriaID = getIdFormaPagamento(categoriasList , categoriaSelect);
+            System.out.println(categoriaID);
+        } catch (SQLException ex) {
+            Logger.getLogger(GUIcadastroContas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+            
+    
+
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jbtnOpenCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnOpenCategoriaActionPerformed
+       JDesktopPane desktopPane = getDesktopPane();
+       GUIcadastroCategoria ccat = new GUIcadastroCategoria();
+       desktopPane.add(ccat);
+       ccat.toFront();
+       ccat.setVisible(true);
+        JInternalFrame[] allFrames = desktopPane.getAllFrames();
+        for (JInternalFrame frame : allFrames) {
+            System.out.println(frame.getTitle());
+            /*if (frame.getTitle().equals("The Frame Title")) {
+                // Perform your actions here
+                frame.toFront();
+                frame.setVisible(true);
+            }*/
+        }
+    }//GEN-LAST:event_jbtnOpenCategoriaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -341,10 +428,10 @@ getBox();
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -352,14 +439,17 @@ getBox();
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JButton jbtCadastrar;
+    private javax.swing.JButton jbtnOpenCategoria;
     private javax.swing.JComboBox<String> jcbCategoriaConta;
     private javax.swing.JComboBox<String> jcbFormaPagamentoConta;
     private javax.swing.JTextArea jtaDescricao;
     private javax.swing.JToggleButton jtbPago;
     private javax.swing.JTextField jtfDataPagamentoConta;
+    private javax.swing.JTextField jtfDataVencimentoConta;
     private javax.swing.JTextField jtfNomeConta;
     private javax.swing.JTextField jtfValorConta;
     // End of variables declaration//GEN-END:variables

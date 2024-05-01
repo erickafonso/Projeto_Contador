@@ -53,7 +53,7 @@ public class CategoriasDAO {
             
             while(rs.next()){
                 CategoriasVO cVO=new CategoriasVO();
-                cVO.setIdCategoria(rs.getInt("idCategorias"));
+                cVO.setIdCategoria(rs.getInt("idCategoria"));
                 cVO.setNome(rs.getString("nome"));
 
                 

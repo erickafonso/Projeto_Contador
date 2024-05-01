@@ -171,4 +171,27 @@ public class FormasPagamentosDAO {
        }//fim do try catch
        
    }//fim do método listarPerfil
+       
+    public int pesquisarIdFormaPagamento(String query) throws SQLException{
+       Connection con = new ConexaoBanco().getConexao();
+       
+       try {
+           String sql = " Select idFormaPagamento from formaPagamento where nome=" + "\""+ query + "\"";
+           PreparedStatement pstm = con.prepareStatement(sql);
+           ResultSet rs = pstm.executeQuery();
+           ArrayList<FormasPagamentosVO> formasPagamentosList = new ArrayList<>();
+           FormasPagamentosVO fVO = new FormasPagamentosVO();
+           int numero = rs.getInt(0);
+           
+
+           pstm.close();
+           return numero;
+                      
+       } catch (SQLException se) {
+           throw new SQLException( "Erro ao pesquisar forma de pagamento! " + se);
+       }finally{
+           con.close();
+       }//fim do finally
+       
+   }//fim do método pesquisar
 }
