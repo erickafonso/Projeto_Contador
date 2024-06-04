@@ -107,3 +107,5 @@ INSERT INTO formaPagamento(idFormaPagamento, nome) values (
 
 
 describe conta;
+
+select * from conta;

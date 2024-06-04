@@ -289,10 +289,13 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel9">
       <Properties>
-        <Property name="text" type="java.lang.String" value="DATA DE PAGAMENTO:"/>
+        <Property name="text" type="java.lang.String" value="DATA DE VENCIMENTO:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jtfDataVencimentoConta">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfDataVencimentoContaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel10">
       <Properties>

@@ -132,7 +132,13 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel9.setText("DATA DE PAGAMENTO:");
+        jLabel9.setText("DATA DE VENCIMENTO:");
+
+        jtfDataVencimentoConta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfDataVencimentoContaActionPerformed(evt);
+            }
+        });
 
         jLabel10.setText("DD/MM/AAAA");
 
@@ -258,6 +264,11 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
             SimpleDateFormat dataFormatada = new SimpleDateFormat("dd/MM/yyyy");
             Date data = dataFormatada.parse(dataCrua);
             cVO.setDataPagamento(data);
+            
+            String dataCruaV = jtfDataVencimentoConta.getText();
+            SimpleDateFormat dataFormatadaV = new SimpleDateFormat("dd/MM/yyyy");
+            Date dataV = dataFormatadaV.parse(dataCruaV);
+            cVO.setDataVencimento(dataV);
 
             
             String categoriaSelect = jcbCategoriaConta.getSelectedItem().toString();
@@ -421,6 +432,10 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
             }*/
         }
     }//GEN-LAST:event_jbtnOpenCategoriaActionPerformed
+
+    private void jtfDataVencimentoContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfDataVencimentoContaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfDataVencimentoContaActionPerformed
 
     /**
      * @param args the command line arguments
