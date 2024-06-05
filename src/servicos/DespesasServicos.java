@@ -24,8 +24,20 @@ public class DespesasServicos {
         DespesasDAO dDAO = DAOFactory.getDespesasDAO();
         return dDAO.buscarDespesa();
     }
+    public ArrayList<DespesasVO> filtrarProduto(String query) throws SQLException{
+        DespesasDAO dDAO = DAOFactory.getDespesasDAO();
+        return dDAO.filtrarDespesa(query);
+    }
     
+        public void deletarDespesa( int idDespesa) throws SQLException{
+        DespesasDAO dDAO = DAOFactory.getDespesasDAO();
+        dDAO.deletarDespesa(idDespesa);
+    }//fim do método deletarProduto
     
+    public void alterarDespesa(DespesasVO dVO) throws SQLException{
+        DespesasDAO dDAO = DAOFactory.getDespesasDAO();
+        dDAO.alterarDespesa(dVO);
+    }//fim do método alterarProduto
     /* ARRUMAR
     public ArrayList<DespesasVO> pesquisarDespesa(String query) throws SQLException{
         DespesasDAO dDAO = DAOFactory.getDespesasDAO();
