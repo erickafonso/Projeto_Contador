@@ -41,6 +41,8 @@ public class GUItelaInicial extends javax.swing.JFrame {
         jmiFormaPagamento = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         jButton1.setText("jButton1");
 
@@ -100,6 +102,18 @@ public class GUItelaInicial extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        jMenu3.setText("jMenu3");
+
+        jMenuItem1.setText("TESTE");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu3);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -144,6 +158,14 @@ public class GUItelaInicial extends javax.swing.JFrame {
 // TODO add your handling code here:
     }//GEN-LAST:event_jmiFormaPagamentoActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        GUIManutencaoDespesas cmd = new GUIManutencaoDespesas();
+        jdpAreaDeTrabalho.add(cmd);
+        cmd.setVisible(true);             // TODO add your handling code here:
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -186,7 +208,9 @@ public class GUItelaInicial extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JDesktopPane jdpAreaDeTrabalho;
     private javax.swing.JMenuItem jmiCategoria;

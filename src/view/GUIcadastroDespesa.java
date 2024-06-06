@@ -14,8 +14,11 @@ import servicos.DespesasServicos;
 
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Vector;
+import modelo.CategoriasVO;
+import modelo.FormasPagamentosVO;
 
 /**
  *
@@ -80,7 +83,7 @@ public class GUIcadastroDespesa extends javax.swing.JInternalFrame {
 
         jLabel3.setText("DATA DE PAGAMENTO:");
 
-        jcbCategoriaDespesa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbCategoriaDespesa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
 
         jLabel4.setText("CATEGORIA");
 
@@ -91,7 +94,7 @@ public class GUIcadastroDespesa extends javax.swing.JInternalFrame {
             }
         });
 
-        jcbFormaPagamentoDespesa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbFormaPagamentoDespesa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
 
         jLabel5.setText("FORMA DE PAGAMENTO");
 
@@ -223,9 +226,20 @@ public class GUIcadastroDespesa extends javax.swing.JInternalFrame {
             Date data = dataFormatada.parse(dataCrua);
             dVO.setDataPagamento(data);
             String categoriaSelect = jcbCategoriaDespesa.getSelectedItem().toString();
+            CategoriasDAO cDAO = new CategoriasDAO();
+            ArrayList<CategoriasVO> categoriasList  = cDAO.buscarCategoria();
+            int categoriaID = getIdCategoria(categoriasList , categoriaSelect);
+            System.out.println("");
+            dVO.setCategoria(categoriaID);
+            
             //cVO.setCategoria(categoriaSelect);
             String formapagamentoSelect = jcbFormaPagamentoDespesa.getSelectedItem().toString();
             //cVO.setFormaPagamento(formapagamentoSelect);
+            FormasPagamentosDAO fpDAO = new FormasPagamentosDAO();
+            ArrayList<FormasPagamentosVO> formasPagamentosList  = fpDAO.buscarFormaPagamento();
+            
+            int formaPagamentoID = getIdFormaPagamento(formasPagamentosList, formapagamentoSelect);
+            dVO.setFormaPagamento(formaPagamentoID);
 
             
 
@@ -253,7 +267,26 @@ public class GUIcadastroDespesa extends javax.swing.JInternalFrame {
         }//fecha o try catch
 
     }//fim do método cadastrar
+         public int getIdCategoria(ArrayList<CategoriasVO> list , String nome){
+        int numero = 1;
+        for(CategoriasVO element : list ){
+                    if(element.getNome().equals(nome)){
+                        numero = element.getIdCategoria();
+                    }
+                }
         
+    return numero; }
+    
+    public int getIdFormaPagamento(ArrayList<FormasPagamentosVO> list , String nome){
+        int numero = 1;
+        for(FormasPagamentosVO element : list ){
+                    if(element.getNome().equals(nome)){
+                        numero = element.getIdFormaPagamento();
+                    }
+                }
+        
+    return numero; }
+    
         public void PreencherComboBoxFormaPagamento(){
         
         try {

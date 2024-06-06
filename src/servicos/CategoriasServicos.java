@@ -24,6 +24,11 @@ public class CategoriasServicos {
         CategoriasDAO cDAO = DAOFactory.getCategoriasDAO();
         return cDAO.buscarCategoria();
     }//fim do método buscarCurso
+    
+    public ArrayList<CategoriasVO> pesquisarCategoria(String query) throws SQLException{
+        CategoriasDAO cDAO = DAOFactory.getCategoriasDAO();
+        return cDAO.pesquisarCategoria(query);
+    }
     /*ARRUMAR
     public ArrayList<UsuariosVO> filtrarUsuarios(String query) throws SQLException{
         UsuariosDAO uDAO = DAOFactory.getUsuariosDAO();

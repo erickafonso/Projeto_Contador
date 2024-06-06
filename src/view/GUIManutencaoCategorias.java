@@ -10,7 +10,8 @@ import dao.DespesasDAO;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import modelo.DespesasVO;
+import modelo.*;
+import servicos.CategoriasServicos;
 import servicos.DespesasServicos;
 import servicos.ServicosFactory;
 
@@ -18,16 +19,16 @@ import servicos.ServicosFactory;
  *
  * @author cralves
  */
-public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
+public class GUIManutencaoCategorias extends javax.swing.JInternalFrame {
 
     DefaultTableModel dtm = new DefaultTableModel(
                 new Object[][]{},
-            new Object[]{"Código", "Nome", "Valor", "Descricao", "Data de pagamento", "Categoria", "Forma de pagamento"}
+            new Object[]{"Código", "Nome"}
     );
     /**
      * Creates new form GUIManutencaoProdutos
      */
-    public GUIManutencaoDespesas() {
+    public GUIManutencaoCategorias() {
         initComponents();
         preencherTabela();
     }
@@ -42,21 +43,11 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jtfDescricao = new javax.swing.JTextField();
-        jtfValor = new javax.swing.JTextField();
         jtfNome = new javax.swing.JTextField();
         jtfCodigo = new javax.swing.JTextField();
         jbtnConfirmarAlteracao = new javax.swing.JButton();
-        jtfDataPagamento = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jcbCategoriaConta = new javax.swing.JComboBox<>();
-        jcbFormaPagamentoConta = new javax.swing.JComboBox<>();
         jLayeredPane2 = new javax.swing.JLayeredPane();
         jbtnPreencher = new javax.swing.JButton();
         jbtnLimpar = new javax.swing.JButton();
@@ -73,10 +64,6 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setTitle("Manutenção Produto");
-
-        jLabel1.setText("Descricao");
-
-        jLabel2.setText("Valor ");
 
         jLabel3.setText("Nome");
 
@@ -97,31 +84,11 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel6.setText("Data de pagamento");
-
-        jLabel7.setText("Categoria");
-
-        jLabel8.setText("Forma de pagamento");
-
-        jcbCategoriaConta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
-
-        jcbFormaPagamentoConta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
-
-        jLayeredPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jtfDescricao, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jtfValor, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jtfNome, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jtfCodigo, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jbtnConfirmarAlteracao, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jtfDataPagamento, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jcbCategoriaConta, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jcbFormaPagamentoConta, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -136,34 +103,14 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
                         .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
+                                .addComponent(jLabel3)
                                 .addGap(18, 18, 18)
-                                .addComponent(jtfDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
-                                .addGap(18, 18, 18)
-                                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jtfValor, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(18, 18, 18)
-                                .addComponent(jtfDataPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jtfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jLayeredPane1Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jtfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(18, 18, 18)
-                                .addComponent(jcbCategoriaConta, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(56, 56, 56)
-                                .addComponent(jLabel8)
-                                .addGap(18, 18, 18)
-                                .addComponent(jcbFormaPagamentoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 34, Short.MAX_VALUE)))
+                                .addComponent(jtfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 229, Short.MAX_VALUE)))
                 .addGap(29, 29, 29))
         );
         jLayeredPane1Layout.setVerticalGroup(
@@ -176,25 +123,7 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jtfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jtfValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jtfDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jtfDataPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8)
-                    .addComponent(jcbCategoriaConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jcbFormaPagamentoConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(156, 156, 156)
                 .addComponent(jbtnConfirmarAlteracao)
                 .addGap(0, 11, Short.MAX_VALUE))
         );
@@ -271,15 +200,15 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
 
         jtProduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Código", "Nome", "Valor", "Descricao", "Data de Pagamento", "Categoria", "Forma de pagamento"
+                "Código", "Nome"
             }
         ));
         jScrollPane1.setViewportView(jtProduto);
@@ -311,7 +240,7 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
             }
         });
 
-        jcbPesquisaPro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Código", "Nome", "Valor", "Data de Pagamento", "Categoria", "Forma de pagamento" }));
+        jcbPesquisaPro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Código", "Nome" }));
         jcbPesquisaPro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbPesquisaProActionPerformed(evt);
@@ -381,25 +310,20 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
     private void preencherTabela(){
         try {
             //Buscando objeto na ProdutoServicos
-            DespesasServicos ps = ServicosFactory.getDespesasSevicos();
+            CategoriasServicos cs = ServicosFactory.getCategoriasServicos();
             
+            ArrayList<CategoriasVO> categoria = new ArrayList<>();
             //Criando um ArrayList<ProdutoVO> vazio para receber o ArryaList com os dados
-            ArrayList<DespesasVO> despesa = new ArrayList<>();
             
             //Recebendo o ArrayList cheio no Produto
-            despesa = ps.buscarDespesa();
-           // DespesasDAO DDAO = new DespesasDAO();
-             //despesa = DDAO.buscarDespesa();
-            System.out.println(despesa);
-            for ( int i = 0; i < despesa.size(); i++) {
+            categoria = cs.buscarCategoria();
+            
+            System.out.println(categoria);
+            for ( int i = 0; i < categoria.size(); i++) {
                 dtm.addRow(new String[] { 
-                    String.valueOf(despesa.get(i).getIdDespesa()),
-                    String.valueOf(despesa.get(i).getNome() ),
-                    String.valueOf(despesa.get(i).getValor() ),
-                    String.valueOf(despesa.get(i).getDescricao() ),
-                    String.valueOf(despesa.get(i).getDataPagamento()),
-                    String.valueOf(despesa.get(i).getCategoria() ),
-                    String.valueOf(despesa.get(i).getFormaPagamento()),
+                    String.valueOf(categoria.get(i).getIdCategoria()),
+                    String.valueOf(categoria.get(i).getNome() ),
+                   
                 });
             }//fecha o laço for
             
@@ -423,34 +347,30 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
                 preencherTabela();
             }else{
                 //ProdutoServicos ps = ServicosFactory.getProdutoServicos();
-                DespesasServicos ps = ServicosFactory.getDespesasSevicos();
+                CategoriasServicos cs = ServicosFactory.getCategoriasServicos();
                 String pesquisa = (String) jcbPesquisaPro.getSelectedItem();
                 String query;
                 if( pesquisa.equals("Código")){
-                    query = "where idDespesa =  " + jtfPesquisaPro.getText();
-                }else if( pesquisa.equals("Nome")){
+                    query = "where idCategoria =  " + jtfPesquisaPro.getText();
+                }else {
                     query = "where nome like '%" + jtfPesquisaPro.getText() + "%' ";
-                }else if( pesquisa.equals("Valor")) {
-                    query = "where valor = " + jtfPesquisaPro.getText();
-                }else{
+                }
+                /*}else{
                     query = "where quantidade = " + jtfPesquisaPro.getText();
-                }//fim do else
+                }//fim do else*/
                  
                 //Criando Array vazio para receber os dados do ArrayList
-                ArrayList<DespesasVO> despesa = new ArrayList<>();
+                ArrayList<CategoriasVO> categoria = new ArrayList<>();
                 
                 //Recebendo o ArrayList cheio no produto
-                despesa = ps.filtrarProduto(query);
+               // categoria = cs.filtrar(query);
+                categoria = cs.pesquisarCategoria(query);
                 
-                for( int i = 0; i < despesa.size(); i++){
+                for( int i = 0; i < categoria.size(); i++){
                     dtm.addRow(new String[] {
-                        String.valueOf(despesa.get(i).getIdDespesa()),
-                        String.valueOf(despesa.get(i).getNome()),
-                        String.valueOf(despesa.get(i).getValor()),
-                        String.valueOf(despesa.get(i).getDescricao()),
-                        String.valueOf(despesa.get(i).getDataPagamento()),
-                        String.valueOf(despesa.get(i).getCategoria()),
-                        String.valueOf(despesa.get(i).getFormaPagamento()),
+                        String.valueOf(categoria.get(i).getIdCategoria()),
+                        String.valueOf(categoria.get(i).getNome()),
+                        
                     });
                 }//fecha o laço for
                 
@@ -474,7 +394,7 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
                         "Por favor selecione uma linha!");
             }else{
                 //ProdutoServicos ps = ServicosFactory.getProdutoServicos();
-                DespesasServicos ps = ServicosFactory.getDespesasSevicos();
+                CategoriasServicos cs = ServicosFactory.getCategoriasServicos();
                 String codDespesa = (String) jtProduto.getValueAt(linha, 0);
                 ps.deletarDespesa(Integer.parseInt(codDespesa));
                 
@@ -497,11 +417,7 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
         if(linha != -1){
             jtfCodigo.setText((String) jtProduto.getValueAt(linha, 0));
             jtfNome.setText((String) jtProduto.getValueAt(linha, 1));
-            jtfValor.setText((String) jtProduto.getValueAt(linha, 2));
-            jtfDescricao.setText((String) jtProduto.getValueAt(linha, 3));
-            jtfDataPagamento.setText((String) jtProduto.getValueAt(linha, 4));
-            jtfCategoria.setText((String) jtProduto.getValueAt(linha, 5));
-            jtfFormaPagamento.setText((String) jtProduto.getValueAt(linha, 6));
+            
 
         }else{
             JOptionPane.showMessageDialog(
@@ -514,9 +430,7 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
     public void confirmarAlteracao(){
         try {
             DespesasVO dVO = new DespesasVO();
-            if(jtfNome.getText().isEmpty() ||
-                    jtfValor.getText().isEmpty() ||
-                    jtfDataPagamento.getText().isEmpty() ) 
+            if(jtfNome.getText().isEmpty()  ) 
             {
                 JOptionPane.showMessageDialog(
                         null,
@@ -526,10 +440,9 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
             }else{
                 dVO.setIdDespesa(Integer.parseInt(jtfCodigo.getText() ) );
                 dVO.setNome(jtfNome.getText() );
-                dVO.setValor(Double.parseDouble(jtfValor.getText() ) );
-                dVO.setDescricao(jtfDescricao.getText()  );
+
                 
-                DespesasServicos ps = ServicosFactory.getDespesasSevicos();
+                CategoriasServicos cs = ServicosFactory.getCategoriasServicos();
                 ps.alterarDespesa(dVO);
                 
                 JOptionPane.showMessageDialog(
@@ -546,7 +459,6 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
     //Eventos Gerados
     
     private void jbtnPreencherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPreencherActionPerformed
-       limparTabela();
         preencherTabela();
        
     }//GEN-LAST:event_jbtnPreencherActionPerformed
@@ -605,14 +517,9 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JLayeredPane jLayeredPane3;
@@ -623,15 +530,10 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbtnDeletar;
     private javax.swing.JButton jbtnLimpar;
     private javax.swing.JButton jbtnPreencher;
-    private javax.swing.JComboBox<String> jcbCategoriaConta;
-    private javax.swing.JComboBox<String> jcbFormaPagamentoConta;
     private javax.swing.JComboBox<String> jcbPesquisaPro;
     private javax.swing.JTable jtProduto;
     private javax.swing.JTextField jtfCodigo;
-    private javax.swing.JTextField jtfDataPagamento;
-    private javax.swing.JTextField jtfDescricao;
     private javax.swing.JTextField jtfNome;
     private javax.swing.JTextField jtfPesquisaPro;
-    private javax.swing.JTextField jtfValor;
     // End of variables declaration//GEN-END:variables
 }

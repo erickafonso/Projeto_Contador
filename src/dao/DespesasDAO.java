@@ -58,8 +58,9 @@ public class DespesasDAO {
                 dVO.setNome(rs.getString("nome"));
 
                 dVO.setValor(rs.getDouble("valor"));
+                dVO.setDescricao(rs.getString("descricao")); 
                 dVO.setDataPagamento(rs.getDate("dataPagamento"));
-                dVO.setDescricao(rs.getString("descricao"));                
+                               
                 dVO.setCategoria(rs.getInt("categoria"));                
                 dVO.setFormaPagamento(rs.getInt("formaPagamento"));                
                 despesasList.add(dVO);
