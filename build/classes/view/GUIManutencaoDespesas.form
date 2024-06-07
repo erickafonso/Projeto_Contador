@@ -98,11 +98,11 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jcbCategoriaConta" min="-2" pref="140" max="-2" attributes="0"/>
+                                  <Component id="jcbCategoriaDespesa" min="-2" pref="140" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                                   <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                  <Component id="jcbFormaPagamentoConta" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <Component id="jcbFormaPagamentoDespesa" min="-2" pref="160" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="0" pref="34" max="32767" attributes="0"/>
@@ -143,8 +143,8 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jcbCategoriaConta" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jcbFormaPagamentoConta" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jcbCategoriaDespesa" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jcbFormaPagamentoDespesa" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jbtnConfirmarAlteracao" min="-2" max="-2" attributes="0"/>
@@ -212,7 +212,7 @@
             <Property name="text" type="java.lang.String" value="Forma de pagamento"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jcbCategoriaConta">
+        <Component class="javax.swing.JComboBox" name="jcbCategoriaDespesa">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="1">
@@ -224,7 +224,7 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jcbFormaPagamentoConta">
+        <Component class="javax.swing.JComboBox" name="jcbFormaPagamentoDespesa">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="1">

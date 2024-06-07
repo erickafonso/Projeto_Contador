@@ -3,6 +3,7 @@ package servicos;
 
 import dao.DAOFactory;
 import dao.FormasPagamentosDAO;
+import java.sql.ResultSet;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -35,10 +36,12 @@ public class FormasPagamentosServicos {
         fDAO.deletarFormaPagamento(idFormaPagamento);
     }//fim do método deletarCurso
     
-    public void alterarUsuario(FormasPagamentosVO fVO) throws SQLException{
+    public void alterarFormaPagamento(FormasPagamentosVO fVO) throws SQLException{
         FormasPagamentosDAO fDAO = DAOFactory.getFormasPagamentosDAO();
         fDAO.alterarFormaPagamento(fVO);
     }//fim do método alterarCurso
+    
+    
     
     
     

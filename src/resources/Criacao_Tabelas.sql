@@ -111,3 +111,4 @@ select * from categoria;
 
 select * from conta;
 Select * from despesa;
+delete from despesa where categoria=0;

@@ -380,11 +380,11 @@ public class GUIManutencaoCategorias extends javax.swing.JInternalFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(
                     null,
-                    "Erro ao filtrar produto! GUIManutencaoProduto.filtrar " + e.getMessage() );
+                    "Erro ao filtrar produto! GUIManutencaoCategoria.filtrar " + e.getMessage() );
         }
     }//fecha o método filtrar
     
-    private void deletarDespesa(){
+    private void deletarCategoria(){
         try {
             int linha = jtProduto.getSelectedRow();
             
@@ -395,24 +395,24 @@ public class GUIManutencaoCategorias extends javax.swing.JInternalFrame {
             }else{
                 //ProdutoServicos ps = ServicosFactory.getProdutoServicos();
                 CategoriasServicos cs = ServicosFactory.getCategoriasServicos();
-                String codDespesa = (String) jtProduto.getValueAt(linha, 0);
-                ps.deletarDespesa(Integer.parseInt(codDespesa));
+                String codCategoria = (String) jtProduto.getValueAt(linha, 0);
+                cs.deletarCategoria(Integer.parseInt(codCategoria));
                 
                 //Mensagem para o usuário
                               
                 JOptionPane.showMessageDialog(
                         null,
-                        "Despesa excluída com sucesso!");
+                        "Categoria excluída com sucesso!");
             }//fim do else
         } catch (Exception e) {
             JOptionPane.showMessageDialog(
                     null,
-                    "Erro ao deletar despesa! GUIManutencaoDespesa.deletar" + e.getMessage() );
+                    "Erro ao deletar categoria! GUIManutencaoCategoria.deletar" + e.getMessage() );
         }
     }//fim do método deletarProduto
     
     
-    private void alterarDespesa(){
+    private void alterarCategoria(){
         int linha = jtProduto.getSelectedRow();
         if(linha != -1){
             jtfCodigo.setText((String) jtProduto.getValueAt(linha, 0));
@@ -429,7 +429,7 @@ public class GUIManutencaoCategorias extends javax.swing.JInternalFrame {
     
     public void confirmarAlteracao(){
         try {
-            DespesasVO dVO = new DespesasVO();
+            CategoriasVO cVO = new CategoriasVO();
             if(jtfNome.getText().isEmpty()  ) 
             {
                 JOptionPane.showMessageDialog(
@@ -438,12 +438,12 @@ public class GUIManutencaoCategorias extends javax.swing.JInternalFrame {
                         "Erro",
                         JOptionPane.ERROR_MESSAGE);
             }else{
-                dVO.setIdDespesa(Integer.parseInt(jtfCodigo.getText() ) );
-                dVO.setNome(jtfNome.getText() );
+                cVO.setIdCategoria(Integer.parseInt(jtfCodigo.getText() ) );
+                cVO.setNome(jtfNome.getText() );
 
                 
                 CategoriasServicos cs = ServicosFactory.getCategoriasServicos();
-                ps.alterarDespesa(dVO);
+                cs.alterarCategoria(cVO);
                 
                 JOptionPane.showMessageDialog(
                         null,
@@ -473,26 +473,26 @@ public class GUIManutencaoCategorias extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtfPesquisaProKeyReleased
 
     private void jbtnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDeletarActionPerformed
-        deletarDespesa();
+        deletarCategoria();
         limparTabela();
         preencherTabela();
     }//GEN-LAST:event_jbtnDeletarActionPerformed
 
     private void jbtnDeletarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbtnDeletarKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            deletarDespesa();
+            deletarCategoria();
             limparTabela();
             preencherTabela();
         }
     }//GEN-LAST:event_jbtnDeletarKeyPressed
 
     private void jbtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAlterarActionPerformed
-       alterarDespesa();
+        alterarCategoria();
     }//GEN-LAST:event_jbtnAlterarActionPerformed
 
     private void jbtnAlterarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbtnAlterarKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            alterarDespesa();
+            alterarCategoria();
         }
     }//GEN-LAST:event_jbtnAlterarKeyPressed
 

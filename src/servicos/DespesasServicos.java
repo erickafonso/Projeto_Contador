@@ -24,7 +24,7 @@ public class DespesasServicos {
         DespesasDAO dDAO = DAOFactory.getDespesasDAO();
         return dDAO.buscarDespesa();
     }
-    public ArrayList<DespesasVO> filtrarProduto(String query) throws SQLException{
+    public ArrayList<DespesasVO> filtrarDespesa(String query) throws SQLException{
         DespesasDAO dDAO = DAOFactory.getDespesasDAO();
         return dDAO.filtrarDespesa(query);
     }
