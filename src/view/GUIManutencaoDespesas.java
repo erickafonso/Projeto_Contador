@@ -5,6 +5,9 @@
  */
 package view;
 
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
+import java.util.Date;
 import com.sun.glass.events.KeyEvent;
 import dao.CategoriasDAO;
 import dao.DespesasDAO;
@@ -14,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.*;
 import modelo.CategoriasVO;
 import modelo.DespesasVO;
 import modelo.FormasPagamentosVO;
@@ -21,7 +25,7 @@ import servicos.DespesasServicos;
 import servicos.ServicosFactory;
 import servicos.FormasPagamentosServicos;
 import servicos.CategoriasServicos;
-
+import utilidades.Conversao;
 /**
  *
  * @author cralves
@@ -59,12 +63,13 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
         jtfNome = new javax.swing.JTextField();
         jtfCodigo = new javax.swing.JTextField();
         jbtnConfirmarAlteracao = new javax.swing.JButton();
-        jtfDataPagamento = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jcbCategoriaDespesa = new javax.swing.JComboBox<>();
         jcbFormaPagamentoDespesa = new javax.swing.JComboBox<>();
+        jtfDataPagamento = new javax.swing.JFormattedTextField();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jLayeredPane2 = new javax.swing.JLayeredPane();
         jbtnPreencher = new javax.swing.JButton();
         jbtnLimpar = new javax.swing.JButton();
@@ -115,6 +120,21 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
 
         jcbFormaPagamentoDespesa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
 
+        try{
+            jtfDataPagamento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+
+        }catch(ParseException ex){
+            JOptionPane.showMessageDialog(this, "Ocorreu um erro na criação da máscara!");
+        }
+        jtfDataPagamento.setToolTipText("");
+        jtfDataPagamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfDataPagamentoActionPerformed(evt);
+            }
+        });
+
+        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+
         jLayeredPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -124,12 +144,13 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
         jLayeredPane1.setLayer(jtfNome, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jtfCodigo, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jbtnConfirmarAlteracao, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jtfDataPagamento, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jcbCategoriaDespesa, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jcbFormaPagamentoDespesa, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jtfDataPagamento, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jFormattedTextField1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -158,7 +179,9 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
                             .addGroup(jLayeredPane1Layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addGap(18, 18, 18)
-                                .addComponent(jtfDataPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jtfDataPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(41, 41, 41)
+                                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jLayeredPane1Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -195,7 +218,8 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jtfDataPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfDataPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -290,6 +314,11 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
                 "Código", "Nome", "Valor", "Descricao", "Data de Pagamento", "Categoria", "Forma de pagamento"
             }
         ));
+        jtProduto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtProdutoMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtProduto);
 
         jLayeredPane3.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -413,6 +442,7 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
             for ( int i = 0; i < despesa.size(); i++) {
                 String categoriaTEMP = "";
                 String formapagamentoTEMP = "";
+                //Date datapagamento = Conversao.dataConverterToDB(despesa.get(i).getDataPagamento());
                 
                 for (CategoriasVO categoria : categorias){
                  if(categoria.getIdCategoria() == despesa.get(i).getCategoria()){
@@ -426,13 +456,15 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
                      System.out.println(formapagamentoTEMP);
                  }
              }
+                String datacagada = Conversao.dataFormaterToDB(despesa.get(i).getDataPagamento());
+                System.out.println(datacagada);
                 dtm.addRow(new String[] { 
                     String.valueOf(despesa.get(i).getIdDespesa()),
                     String.valueOf(despesa.get(i).getNome() ),
                     String.valueOf(despesa.get(i).getValor() ),
                     String.valueOf(despesa.get(i).getDescricao() ),
-                    String.valueOf(despesa.get(i).getDataPagamento()),
-                    
+                    //String.valueOf(despesa.get(i).getDataPagamento()),
+                    datacagada,
                     
                     //categorias.get(despesa.get(i).getCategoria()).getNome(),
                     categoriaTEMP,
@@ -544,9 +576,7 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
             jtfValor.setText((String) jtProduto.getValueAt(linha, 2));
             jtfDescricao.setText((String) jtProduto.getValueAt(linha, 3));
             jtfDataPagamento.setText((String) jtProduto.getValueAt(linha, 4));
-            //jcbCategoriaDespesa.setText((String) jtProduto.getValueAt(linha, 5));
-            System.out.println(jtProduto.getValueAt(linha, 5));
-          //  jcbCategoriaDespesa.setSelectedItem("\""+(String) jtProduto.getValueAt(linha, 5)+"\"");
+
             jcbCategoriaDespesa.setSelectedItem((String) jtProduto.getValueAt(linha, 5));
             jcbFormaPagamentoDespesa.setSelectedItem((String) jtProduto.getValueAt(linha, 6));
 
@@ -629,7 +659,16 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
         }//fim do try catch
         
     }//fim do método restaurarPerfilComboBox
-    
+     MaskFormatter jftfData;
+
+    public Date formatarDatas(){
+        try{
+        jftfData = new MaskFormatter("##/##/####");
+        }catch(ParseException ex){
+            JOptionPane.showMessageDialog(this, "Ocorreu um erro na criação da máscara!");
+        }
+        return null;
+    }//fim do método formatarData
     
     
     //Eventos Gerados
@@ -693,9 +732,18 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbPesquisaProActionPerformed
 
+    private void jtfDataPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfDataPagamentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfDataPagamentoActionPerformed
+
+    private void jtProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtProdutoMouseClicked
+        System.out.println(jtProduto.getSelectedRow());        // TODO add your handling code here:
+    }//GEN-LAST:event_jtProdutoMouseClicked
+
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -719,7 +767,7 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> jcbPesquisaPro;
     private javax.swing.JTable jtProduto;
     private javax.swing.JTextField jtfCodigo;
-    private javax.swing.JTextField jtfDataPagamento;
+    private javax.swing.JFormattedTextField jtfDataPagamento;
     private javax.swing.JTextField jtfDescricao;
     private javax.swing.JTextField jtfNome;
     private javax.swing.JTextField jtfPesquisaPro;

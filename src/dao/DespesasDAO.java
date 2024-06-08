@@ -118,7 +118,7 @@ public class DespesasDAO {
             //String sql = "delete from curso where idCurso = ?";
             PreparedStatement pstm = con.prepareStatement(sql);
 
-            pstm.setInt(0, idDespesa);
+            pstm.setInt(1, idDespesa);
             //pstm.setInt(1, idCurso);
             pstm.execute();
             pstm.close();
