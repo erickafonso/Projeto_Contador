@@ -32,19 +32,31 @@ public class GUItelaInicial extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu4 = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
         jdpAreaDeTrabalho = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jmiConta = new javax.swing.JMenuItem();
-        jmiDespesa = new javax.swing.JMenuItem();
-        jmiCategoria = new javax.swing.JMenuItem();
-        jmiFormaPagamento = new javax.swing.JMenuItem();
+        jmiEditarConta = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        jmiCadastroDespesa = new javax.swing.JMenuItem();
+        jmiEdicaoDespesa = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jmiCadastroCategoria = new javax.swing.JMenuItem();
+        jmiEdicaoCategoria = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        jmiCadastroFormaPagamento = new javax.swing.JMenuItem();
+        jmiEdicaoFormaPagamento = new javax.swing.JMenuItem();
 
         jButton1.setText("jButton1");
+
+        jMenu4.setText("File");
+        jMenuBar2.add(jMenu4);
+
+        jMenu5.setText("Edit");
+        jMenuBar2.add(jMenu5);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,9 +71,9 @@ public class GUItelaInicial extends javax.swing.JFrame {
             .addGap(0, 736, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("Cadastrar");
+        jMenu1.setText("Contas");
 
-        jmiConta.setText("Conta");
+        jmiConta.setText("Criar Conta");
         jmiConta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmiContaActionPerformed(evt);
@@ -69,50 +81,75 @@ public class GUItelaInicial extends javax.swing.JFrame {
         });
         jMenu1.add(jmiConta);
 
-        jmiDespesa.setText("Despesa");
-        jmiDespesa.addActionListener(new java.awt.event.ActionListener() {
+        jmiEditarConta.setText("Editar/Excluir");
+        jmiEditarConta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiDespesaActionPerformed(evt);
+                jmiEditarContaActionPerformed(evt);
             }
         });
-        jMenu1.add(jmiDespesa);
-
-        jmiCategoria.setText("Categoria");
-        jmiCategoria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiCategoriaActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jmiCategoria);
-
-        jmiFormaPagamento.setText("Forma de Pagamento");
-        jmiFormaPagamento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiFormaPagamentoActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jmiFormaPagamento);
+        jMenu1.add(jmiEditarConta);
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Relatórios");
+        jMenu2.setText("Despesas");
 
-        jMenuItem5.setText("EM CONSTRUCAO");
-        jMenu2.add(jMenuItem5);
+        jmiCadastroDespesa.setText("Criar Despesa");
+        jmiCadastroDespesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiCadastroDespesaActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmiCadastroDespesa);
+
+        jmiEdicaoDespesa.setText("Editar/Excluir");
+        jmiEdicaoDespesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiEdicaoDespesaActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmiEdicaoDespesa);
 
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setText("jMenu3");
+        jMenu3.setText("Categorias");
 
-        jMenuItem1.setText("TESTE");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jmiCadastroCategoria.setText("Criar Categoria");
+        jmiCadastroCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jmiCadastroCategoriaActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem1);
+        jMenu3.add(jmiCadastroCategoria);
+
+        jmiEdicaoCategoria.setText("Editar/Excluir");
+        jmiEdicaoCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiEdicaoCategoriaActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jmiEdicaoCategoria);
 
         jMenuBar1.add(jMenu3);
+
+        jMenu6.setText("Formas de pagamento");
+
+        jmiCadastroFormaPagamento.setText("Salvar Forma de pagamento");
+        jmiCadastroFormaPagamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiCadastroFormaPagamentoActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jmiCadastroFormaPagamento);
+
+        jmiEdicaoFormaPagamento.setText("Editar/Excluir");
+        jmiEdicaoFormaPagamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiEdicaoFormaPagamentoActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jmiEdicaoFormaPagamento);
+
+        jMenuBar1.add(jMenu6);
 
         setJMenuBar(jMenuBar1);
 
@@ -137,34 +174,52 @@ public class GUItelaInicial extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jmiContaActionPerformed
 
-    private void jmiDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiDespesaActionPerformed
-         GUIcadastroDespesa cd = new GUIcadastroDespesa();
-            jdpAreaDeTrabalho.add(cd);
-                cd.setVisible(true);          // TODO add your handling code here:
-    }//GEN-LAST:event_jmiDespesaActionPerformed
+    private void jmiEditarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEditarContaActionPerformed
+         GUIManutencaoContas mc = new GUIManutencaoContas();
+            jdpAreaDeTrabalho.add(mc);
+                mc.setVisible(true);          // TODO add your handling code here:
+    }//GEN-LAST:event_jmiEditarContaActionPerformed
 
-    private void jmiCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCategoriaActionPerformed
-         GUIcadastroCategoria ccat = new GUIcadastroCategoria();
+    private void jmiCadastroCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCadastroCategoriaActionPerformed
+        GUIcadastroCategoria ccat = new GUIcadastroCategoria();
             jdpAreaDeTrabalho.add(ccat);
                 ccat.setVisible(true);  
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jmiCategoriaActionPerformed
+        // TODO add your handling code here         // TODO add your handling code here:
 
-    private void jmiFormaPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiFormaPagamentoActionPerformed
-       GUIcadastroFormaPagamento fp = new GUIcadastroFormaPagamento();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmiCadastroCategoriaActionPerformed
+
+    private void jmiCadastroDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCadastroDespesaActionPerformed
+        GUIcadastroDespesa cd = new GUIcadastroDespesa();
+        jdpAreaDeTrabalho.add(cd);
+        cd.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jmiCadastroDespesaActionPerformed
+
+    private void jmiEdicaoDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEdicaoDespesaActionPerformed
+     GUIManutencaoDespesas cmd = new GUIManutencaoDespesas();
+        jdpAreaDeTrabalho.add(cmd);
+        cmd.setVisible(true);       // TODO add your handling code here:
+    }//GEN-LAST:event_jmiEdicaoDespesaActionPerformed
+
+    private void jmiCadastroFormaPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCadastroFormaPagamentoActionPerformed
+    GUIcadastroFormaPagamento fp = new GUIcadastroFormaPagamento();
             jdpAreaDeTrabalho.add(fp);
                 fp.setVisible(true);
-        
-// TODO add your handling code here:
-    }//GEN-LAST:event_jmiFormaPagamentoActionPerformed
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        GUIManutencaoDespesas cmd = new GUIManutencaoDespesas();
-        jdpAreaDeTrabalho.add(cmd);
-        cmd.setVisible(true);             // TODO add your handling code here:
-
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_jmiCadastroFormaPagamentoActionPerformed
+
+    private void jmiEdicaoCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEdicaoCategoriaActionPerformed
+     GUIManutencaoCategorias cmc = new GUIManutencaoCategorias();
+        jdpAreaDeTrabalho.add(cmc);
+        cmc.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmiEdicaoCategoriaActionPerformed
+
+    private void jmiEdicaoFormaPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEdicaoFormaPagamentoActionPerformed
+     GUIManutencaoFormasPagamentos mfp = new GUIManutencaoFormasPagamentos();
+        jdpAreaDeTrabalho.add(mfp);
+        mfp.setVisible(true);   // TODO add your handling code here:
+    }//GEN-LAST:event_jmiEdicaoFormaPagamentoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,13 +264,19 @@ public class GUItelaInicial extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JDesktopPane jdpAreaDeTrabalho;
-    private javax.swing.JMenuItem jmiCategoria;
+    private javax.swing.JMenuItem jmiCadastroCategoria;
+    private javax.swing.JMenuItem jmiCadastroDespesa;
+    private javax.swing.JMenuItem jmiCadastroFormaPagamento;
     private javax.swing.JMenuItem jmiConta;
-    private javax.swing.JMenuItem jmiDespesa;
-    private javax.swing.JMenuItem jmiFormaPagamento;
+    private javax.swing.JMenuItem jmiEdicaoCategoria;
+    private javax.swing.JMenuItem jmiEdicaoDespesa;
+    private javax.swing.JMenuItem jmiEdicaoFormaPagamento;
+    private javax.swing.JMenuItem jmiEditarConta;
     // End of variables declaration//GEN-END:variables
 }

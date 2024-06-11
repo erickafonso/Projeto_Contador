@@ -6,13 +6,13 @@
 package view;
 
 import com.sun.glass.events.KeyEvent;
-import dao.DespesasDAO;
+import dao.CategoriasDAO;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.*;
 import servicos.CategoriasServicos;
-import servicos.DespesasServicos;
+import servicos.CategoriasServicos;
 import servicos.ServicosFactory;
 
 /**
@@ -333,7 +333,7 @@ public class GUIManutencaoCategorias extends javax.swing.JInternalFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(
                     null,
-                    "Erro! GUIManutencaoDespesas.preencherTabela" + e.getMessage()  );
+                    "Erro! GUIManutencaoCategorias.preencherTabela" + e.getMessage()  );
         }//fim do catch
     }//fim do método preencherTabela
     
@@ -447,7 +447,7 @@ public class GUIManutencaoCategorias extends javax.swing.JInternalFrame {
                 
                 JOptionPane.showMessageDialog(
                         null,
-                        "Despesa alterada com sucesso!");
+                        "Categoria alterada com sucesso!");
             }//fim do if else
         } catch (Exception e) {
             JOptionPane.showMessageDialog(
@@ -459,6 +459,7 @@ public class GUIManutencaoCategorias extends javax.swing.JInternalFrame {
     //Eventos Gerados
     
     private void jbtnPreencherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPreencherActionPerformed
+        limparTabela();
         preencherTabela();
        
     }//GEN-LAST:event_jbtnPreencherActionPerformed

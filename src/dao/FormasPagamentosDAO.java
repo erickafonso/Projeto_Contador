@@ -122,7 +122,7 @@ public class FormasPagamentosDAO {
             //String sql = "delete from curso where idCurso = ?";
             PreparedStatement pstm = con.prepareStatement(sql);
 
-            pstm.setInt(0, idFormaPagamento);
+            pstm.setInt(1, idFormaPagamento);
             //pstm.setInt(1, idCurso);
             pstm.execute();
             pstm.close();
@@ -139,9 +139,9 @@ public class FormasPagamentosDAO {
         try {
             String sql;
             sql = "Update formaPagamento set "
-                    + "nome = ' " + fVO.getNome() + " ', "
+                    + "nome = ' " + fVO.getNome() + " ' "
 
-                    + " where idFormaPagamento= " + fVO.getIdFormaPagamento() + " ";
+                    + " where idFormaPagamento= " + fVO.getIdFormaPagamento() + "; ";
 
             PreparedStatement pstm = con.prepareStatement(sql);
             pstm.executeUpdate();

@@ -16,6 +16,7 @@ import modelo.ContasVO;
 import servicos.ContasServicos;
 import dao.FormasPagamentosDAO;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -51,7 +52,6 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
         jtfValorConta = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jtfDataPagamentoConta = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jcbCategoriaConta = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
@@ -68,8 +68,9 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
         jbtCadastrar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        jtfDataVencimentoConta = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
+        jtfDataPagamentoConta = new javax.swing.JFormattedTextField();
+        jtfDataVencimentoConta = new javax.swing.JFormattedTextField();
 
         jTextField1.setText("jTextField1");
 
@@ -134,13 +135,33 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
 
         jLabel9.setText("DATA DE VENCIMENTO:");
 
+        jLabel10.setText("DD/MM/AAAA");
+
+        try{
+            jtfDataPagamentoConta.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+
+        }catch(ParseException ex){
+            JOptionPane.showMessageDialog(this, "Ocorreu um erro na criação da máscara!");
+        }
+        jtfDataPagamentoConta.setToolTipText("");
+        jtfDataPagamentoConta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfDataPagamentoContaActionPerformed(evt);
+            }
+        });
+
+        try{
+            jtfDataVencimentoConta.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+
+        }catch(ParseException ex){
+            JOptionPane.showMessageDialog(this, "Ocorreu um erro na criação da máscara!");
+        }
+        jtfDataVencimentoConta.setToolTipText("");
         jtfDataVencimentoConta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfDataVencimentoContaActionPerformed(evt);
             }
         });
-
-        jLabel10.setText("DD/MM/AAAA");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -184,18 +205,18 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
                                     .addComponent(jtfValorConta)
                                     .addComponent(jtfNomeConta, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(9, 9, 9)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGap(12, 12, 12)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel9))
+                                .addGap(40, 40, 40)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addGap(49, 49, 49)
-                                        .addComponent(jtfDataPagamentoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jtfDataPagamentoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel9)
-                                        .addGap(49, 49, 49)
-                                        .addComponent(jtfDataVencimentoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jtfDataVencimentoConta)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(layout.createSequentialGroup()
@@ -218,17 +239,21 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfDataPagamentoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel8))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfDataVencimentoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10))
-                .addGap(44, 44, 44)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel8))
+                        .addGap(118, 118, 118))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jtfDataPagamentoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jtfDataVencimentoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel9))
+                        .addGap(53, 53, 53)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jcbCategoriaConta, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
@@ -433,6 +458,10 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jbtnOpenCategoriaActionPerformed
 
+    private void jtfDataPagamentoContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfDataPagamentoContaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfDataPagamentoContaActionPerformed
+
     private void jtfDataVencimentoContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfDataVencimentoContaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfDataVencimentoContaActionPerformed
@@ -463,8 +492,8 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> jcbFormaPagamentoConta;
     private javax.swing.JTextArea jtaDescricao;
     private javax.swing.JToggleButton jtbPago;
-    private javax.swing.JTextField jtfDataPagamentoConta;
-    private javax.swing.JTextField jtfDataVencimentoConta;
+    private javax.swing.JFormattedTextField jtfDataPagamentoConta;
+    private javax.swing.JFormattedTextField jtfDataVencimentoConta;
     private javax.swing.JTextField jtfNomeConta;
     private javax.swing.JTextField jtfValorConta;
     // End of variables declaration//GEN-END:variables

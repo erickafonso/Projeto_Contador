@@ -131,17 +131,20 @@ public class DespesasDAO {
 
     public void alterarDespesa(DespesasVO dVO) throws SQLException {
         Connection con = new ConexaoBanco().getConexao();
+        Date sqlDate = new java.sql.Date(dVO.getDataPagamento().getTime());
+        
 
         try {
             String sql;
             sql = "Update despesa set "
                     + "nome = ' " + dVO.getNome() + " ', "
                     + "valor = " + dVO.getValor() + ", "
-                    + "dataPagamento = " + dVO.getDataPagamento() + ", "
-                    + "descricao = " + dVO.getDescricao() + ", "
+                    + "descricao = ' " + dVO.getDescricao() + "', "
+                    + "dataPagamento = '" + sqlDate + "', "
+                    
                     + "categoria = " + dVO.getCategoria() + ", "
-                    + "formaPagamento = " + dVO.getFormaPagamento() + ", "
-                    + " where idDespesa = " + dVO.getIdDespesa() + " ";
+                    + "formaPagamento = " + dVO.getFormaPagamento() + " "
+                    + " where idDespesa = " + dVO.getIdDespesa() + "; ";
 
             PreparedStatement pstm = con.prepareStatement(sql);
             pstm.executeUpdate();

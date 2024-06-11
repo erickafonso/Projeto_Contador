@@ -31,6 +31,11 @@ public class FormasPagamentosServicos {
         return uDAO.filtrarUsuario(query);
     }//fim do método filtrarCurso
     */
+    public ArrayList<FormasPagamentosVO> pesquisarFormaPagamento(String query) throws SQLException{
+        FormasPagamentosDAO fDAO = DAOFactory.getFormasPagamentosDAO();
+        return fDAO.pesquisarFormaPagamento(query);
+    }
+    
     public void deletarFormaPagamento( int idFormaPagamento) throws SQLException{
         FormasPagamentosDAO fDAO = DAOFactory.getFormasPagamentosDAO();
         fDAO.deletarFormaPagamento(idFormaPagamento);

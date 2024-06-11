@@ -48,7 +48,6 @@ public class GUIcadastroDespesa extends javax.swing.JInternalFrame {
         jtfValorDespesa = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jtfDataPagamentoDespesa = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jcbCategoriaDespesa = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
@@ -61,6 +60,7 @@ public class GUIcadastroDespesa extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jbtCadastrar = new javax.swing.JButton();
+        jtfDataPagamentoDespesa = new javax.swing.JFormattedTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -74,12 +74,6 @@ public class GUIcadastroDespesa extends javax.swing.JInternalFrame {
         jLabel1.setText("NOME");
 
         jLabel2.setText("VALOR");
-
-        jtfDataPagamentoDespesa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfDataPagamentoDespesaActionPerformed(evt);
-            }
-        });
 
         jLabel3.setText("DATA DE PAGAMENTO:");
 
@@ -115,6 +109,19 @@ public class GUIcadastroDespesa extends javax.swing.JInternalFrame {
             }
         });
 
+        try{
+            jtfDataPagamentoDespesa.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+
+        }catch(ParseException ex){
+            JOptionPane.showMessageDialog(this, "Ocorreu um erro na criação da máscara!");
+        }
+        jtfDataPagamentoDespesa.setToolTipText("");
+        jtfDataPagamentoDespesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfDataPagamentoDespesaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -123,49 +130,48 @@ public class GUIcadastroDespesa extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(5, 5, 5)
-                                .addComponent(jLabel3))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel5)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
                         .addGap(49, 49, 49)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jtfDataPagamentoDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(31, 31, 31)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jcbCategoriaDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(26, 26, 26)
-                                    .addComponent(jButton1))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jcbFormaPagamentoDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(26, 26, 26)
-                                    .addComponent(jButton2)))))
+                                .addComponent(jcbCategoriaDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(jButton1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jcbFormaPagamentoDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(jButton2))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addGap(59, 59, 59))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGap(14, 14, 14)
+                                    .addComponent(jLabel1)
+                                    .addGap(49, 49, 49)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(59, 59, 59))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(jLabel1)
+                                .addComponent(jLabel3)
                                 .addGap(49, 49, 49)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jtfValorDespesa)
                             .addComponent(jtfNomeDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(213, 213, 213)
+                        .addComponent(jbtCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(68, 68, 68)
                         .addComponent(jLabel7)
                         .addGap(55, 55, 55)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(213, 213, 213)
-                        .addComponent(jbtCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jtfDataPagamentoDespesa)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(67, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -183,12 +189,11 @@ public class GUIcadastroDespesa extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jtfDataPagamentoDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel8)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtfDataPagamentoDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel3))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(54, 54, 54)
@@ -225,6 +230,7 @@ public class GUIcadastroDespesa extends javax.swing.JInternalFrame {
             SimpleDateFormat dataFormatada = new SimpleDateFormat("dd/MM/yyyy");
             Date data = dataFormatada.parse(dataCrua);
             dVO.setDataPagamento(data);
+            System.out.println(data);
             String categoriaSelect = jcbCategoriaDespesa.getSelectedItem().toString();
             CategoriasDAO cDAO = new CategoriasDAO();
             ArrayList<CategoriasVO> categoriasList  = cDAO.buscarCategoria();
@@ -334,15 +340,15 @@ public class GUIcadastroDespesa extends javax.swing.JInternalFrame {
 cadastrar();        // TODO add your handling code here:
     }//GEN-LAST:event_jbtCadastrarActionPerformed
 
-    private void jtfDataPagamentoDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfDataPagamentoDespesaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfDataPagamentoDespesaActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
          GUIcadastroCategoria ccat = new GUIcadastroCategoria();
             this.add(ccat);
                 ccat.setVisible(true);          // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jtfDataPagamentoDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfDataPagamentoDespesaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfDataPagamentoDespesaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -360,7 +366,7 @@ cadastrar();        // TODO add your handling code here:
     private javax.swing.JComboBox<String> jcbCategoriaDespesa;
     private javax.swing.JComboBox<String> jcbFormaPagamentoDespesa;
     private javax.swing.JTextArea jtaDescricao;
-    private javax.swing.JTextField jtfDataPagamentoDespesa;
+    private javax.swing.JFormattedTextField jtfDataPagamentoDespesa;
     private javax.swing.JTextField jtfNomeDespesa;
     private javax.swing.JTextField jtfValorDespesa;
     // End of variables declaration//GEN-END:variables

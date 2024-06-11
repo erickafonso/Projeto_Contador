@@ -123,7 +123,7 @@ public class ContasDAO {
             //String sql = "delete from curso where idCurso = ?";
             PreparedStatement pstm = con.prepareStatement(sql);
 
-            pstm.setInt(0, idConta);
+            pstm.setInt(1, idConta);
             //pstm.setInt(1, idCurso);
             pstm.execute();
             pstm.close();
@@ -136,18 +136,19 @@ public class ContasDAO {
 
     public void alterarConta(ContasVO cVO) throws SQLException {
         Connection con = new ConexaoBanco().getConexao();
-
+        Date sqlDate = new java.sql.Date(cVO.getDataPagamento().getTime());
+        Date sqlDate2 = new java.sql.Date(cVO.getDataVencimento().getTime());
         try {
             String sql;
             sql = "Update conta set "
                     + "nome = ' " + cVO.getNome() + " ', "
                     + "valor = " + cVO.getValor() + ", "
                     + "descricao = " + cVO.getDescricao() + ", "
-                    + "dataPagamento = " + cVO.getDataPagamento() + ", "
-                    + "dataVencimento = " + cVO.getDataVencimento() + ", "
+                    + "dataPagamento = '" + sqlDate + "', "
+                    + "dataVencimento = '" + sqlDate2 + "', "
                     + "categoria = " + cVO.getCategoria() + ", "
-                    + "formaPagamento = " + cVO.getFormaPagamento() + ", "
-                    + " where idConta= " + cVO.getIdConta() + " ";
+                    + "formaPagamento = " + cVO.getFormaPagamento() + " "
+                    + " where idConta= " + cVO.getIdConta() + "; ";
 
             PreparedStatement pstm = con.prepareStatement(sql);
             pstm.executeUpdate();

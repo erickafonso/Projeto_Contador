@@ -69,7 +69,6 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
         jcbCategoriaDespesa = new javax.swing.JComboBox<>();
         jcbFormaPagamentoDespesa = new javax.swing.JComboBox<>();
         jtfDataPagamento = new javax.swing.JFormattedTextField();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jLayeredPane2 = new javax.swing.JLayeredPane();
         jbtnPreencher = new javax.swing.JButton();
         jbtnLimpar = new javax.swing.JButton();
@@ -85,7 +84,7 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-        setTitle("Manutenção Produto");
+        setTitle("Manutenção Despesa");
 
         jLabel1.setText("Descricao");
 
@@ -133,8 +132,6 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
             }
         });
 
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
-
         jLayeredPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -150,7 +147,6 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
         jLayeredPane1.setLayer(jcbCategoriaDespesa, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jcbFormaPagamentoDespesa, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jtfDataPagamento, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jFormattedTextField1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -179,9 +175,7 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
                             .addGroup(jLayeredPane1Layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addGap(18, 18, 18)
-                                .addComponent(jtfDataPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(41, 41, 41)
-                                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jtfDataPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jLayeredPane1Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -218,8 +212,7 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jtfDataPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfDataPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -606,6 +599,29 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
                 dVO.setValor(Double.parseDouble(jtfValor.getText() ) );
                 dVO.setDescricao(jtfDescricao.getText()  );
                 
+                String dataCrua =  jtfDataPagamento.getText();
+                
+            SimpleDateFormat dataFormatada = new SimpleDateFormat("dd/MM/yyyy");
+            Date data = dataFormatada.parse(dataCrua);
+                System.out.println(data);
+            dVO.setDataPagamento(data);
+            
+            String categoriaSelect = jcbCategoriaDespesa.getSelectedItem().toString();
+            CategoriasDAO cDAO = new CategoriasDAO();
+            ArrayList<CategoriasVO> categoriasList  = cDAO.buscarCategoria();
+            int categoriaID = getIdCategoria(categoriasList , categoriaSelect);
+            System.out.println("");
+            dVO.setCategoria(categoriaID);
+            
+            //cVO.setCategoria(categoriaSelect);
+            String formapagamentoSelect = jcbFormaPagamentoDespesa.getSelectedItem().toString();
+            //cVO.setFormaPagamento(formapagamentoSelect);
+            FormasPagamentosDAO fpDAO = new FormasPagamentosDAO();
+            ArrayList<FormasPagamentosVO> formasPagamentosList  = fpDAO.buscarFormaPagamento();
+            
+            int formaPagamentoID = getIdFormaPagamento(formasPagamentosList, formapagamentoSelect);
+            dVO.setFormaPagamento(formaPagamentoID);
+                
                 DespesasServicos ps = ServicosFactory.getDespesasSevicos();
                 ps.alterarDespesa(dVO);
                 
@@ -619,7 +635,25 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
                     "Erro!" + e.getMessage());
         }
     }//fim do método confirmarAlteracao
+    public int getIdCategoria(ArrayList<CategoriasVO> list , String nome){
+        int numero = 1;
+        for(CategoriasVO element : list ){
+                    if(element.getNome().equals(nome)){
+                        numero = element.getIdCategoria();
+                    }
+                }
+        
+    return numero; }
     
+    public int getIdFormaPagamento(ArrayList<FormasPagamentosVO> list , String nome){
+        int numero = 1;
+        for(FormasPagamentosVO element : list ){
+                    if(element.getNome().equals(nome)){
+                        numero = element.getIdFormaPagamento();
+                    }
+                }
+        
+    return numero; }
     public void PreencherComboBoxFormaPagamento(){
         
         try {
@@ -743,7 +777,6 @@ public class GUIManutencaoDespesas extends javax.swing.JInternalFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -122,12 +122,12 @@ public class CategoriasDAO {
             //String sql = "delete from curso where idCurso = ?";
             PreparedStatement pstm = con.prepareStatement(sql);
 
-            pstm.setInt(0, idCategoria);
+            pstm.setInt(1, idCategoria);
             //pstm.setInt(1, idCurso);
             pstm.execute();
             pstm.close();
         } catch (SQLException se) {
-            throw new SQLException("Erro ao deletar categoria! UsuariosDAO " + se.getMessage());
+            throw new SQLException("Erro ao deletar categoria! CategoriasDAO " + se.getMessage());
         } finally {
             con.close();
         }//fim da finally
@@ -139,9 +139,9 @@ public class CategoriasDAO {
         try {
             String sql;
             sql = "Update categoria set "
-                    + "nome = ' " + cVO.getNome() + " ', "
+                    + "nome = ' " + cVO.getNome() + " ' "
 
-                    + " where idCategoria= " + cVO.getIdCategoria() + " ";
+                    + " where idCategoria= " + cVO.getIdCategoria() + " ;";
 
             PreparedStatement pstm = con.prepareStatement(sql);
             pstm.executeUpdate();

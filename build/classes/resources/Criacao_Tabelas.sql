@@ -108,7 +108,7 @@ INSERT INTO formaPagamento(idFormaPagamento, nome) values (
 
 describe conta;
 select * from categoria;
-
+select * from formapagamento;
 select * from conta;
 Select * from despesa;
 delete from despesa where categoria=0;
