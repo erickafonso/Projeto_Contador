@@ -14,12 +14,21 @@ import java.util.ArrayList;
 public class UsuariosVO {
     private int idUsuario;
     private String nome;
+    private Double salario;
     private String email;
     private String login;
     private String senha;
 
     public int getIdUsuario() {
         return idUsuario;
+    }
+
+    public Double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(Double salario) {
+        this.salario = salario;
     }
 
     public void setIdUsuario(int idUsuario) {

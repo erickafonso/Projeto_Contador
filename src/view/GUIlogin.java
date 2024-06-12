@@ -13,11 +13,13 @@ import java.awt.Container;
  */
 public class GUIlogin extends javax.swing.JFrame {
 
+        
     /**
      * Creates new form GUItelaInicial
      */
     public GUIlogin() {
         initComponents();
+        
     }
 
     /**
@@ -33,7 +35,7 @@ public class GUIlogin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jbtCadastroUsuario = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jpfSenha = new javax.swing.JPasswordField();
 
@@ -45,10 +47,10 @@ public class GUIlogin extends javax.swing.JFrame {
 
         jLabel3.setText("Ou clique aqui para criar uma conta:");
 
-        jButton1.setText("CADASTRE-SE");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jbtCadastroUsuario.setText("CADASTRE-SE");
+        jbtCadastroUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jbtCadastroUsuarioActionPerformed(evt);
             }
         });
 
@@ -74,7 +76,7 @@ public class GUIlogin extends javax.swing.JFrame {
                         .addComponent(jLabel3))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(287, 287, 287)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jbtCadastroUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(286, 286, 286)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -96,17 +98,21 @@ public class GUIlogin extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addComponent(jLabel3)
                 .addGap(27, 27, 27)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbtCadastroUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(165, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        GUIcadastroUsuario cu = new GUIcadastroUsuario();
-                cu.setVisible(true);        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jbtCadastroUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtCadastroUsuarioActionPerformed
+        
+        Container c = getContentPane();
+        c.add(new GuiCadastroUsuarioB());
+                setVisible(true);   
+                //dispose();// TODO add your handling code here:
+                System.out.println("plim");
+    }//GEN-LAST:event_jbtCadastroUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,11 +151,11 @@ public class GUIlogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton jbtCadastroUsuario;
     private javax.swing.JPasswordField jpfSenha;
     private javax.swing.JTextField jtfLogin;
     // End of variables declaration//GEN-END:variables

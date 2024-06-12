@@ -79,6 +79,14 @@ public class Conversao {
     return null;    
     }
     }
+    public static boolean verficadorNumero(String data){
+    try {
+            int valor = Integer.parseInt(data);
+            return true;
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Insira um valor válido!");
+            return false;
+        }
     
-    
+    }
 }//fecha classe Conversao

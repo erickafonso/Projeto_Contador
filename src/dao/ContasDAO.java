@@ -141,7 +141,7 @@ public class ContasDAO {
         try {
             String sql;
             sql = "Update conta set "
-                    + "nome = ' " + cVO.getNome() + " ', "
+                    + "nome = '" + cVO.getNome() + " ', "
                     + "valor = " + cVO.getValor() + ", "
                     + "descricao = " + cVO.getDescricao() + ", "
                     + "dataPagamento = '" + sqlDate + "', "

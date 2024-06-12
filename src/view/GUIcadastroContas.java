@@ -24,6 +24,7 @@ import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import modelo.CategoriasVO;
 import modelo.FormasPagamentosVO;
+import utilidades.Conversao;
 
 /**
  *
@@ -277,6 +278,8 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cadastrar() {
+        
+        if (Conversao.verficadorNumero(jtfValorConta.getText())){
         try {
             ContasVO cVO = new ContasVO();
             cVO.setNome(jtfNomeConta.getText());
@@ -332,13 +335,13 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
             //Retorno para o usuário
             JOptionPane.showMessageDialog(
                     null,
-                    "Forma de Pagamento Cadastrado com sucesso! ");
+                    "Conta Cadastrada com sucesso! ");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(
                     null,
                     "Erro! GUICadastroConta " + e.getMessage());
         }//fecha o try catch
-
+    }
     }//fim do método cadastrar
     
         //Variável para armazenar o idperfil que é chave estrangeira na tabela login
@@ -387,7 +390,7 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(
                     null,
-                    "Erro GuiLogin.restaurarPerfilComboBox " + e.getMessage());
+                    "Erro GuiCadastroConta.PreencherComboBoxFormaPagamento " + e.getMessage());
         }//fim do try catch
         
     }//fim do método restaurarPerfilComboBox
@@ -407,7 +410,7 @@ public class GUIcadastroContas extends javax.swing.JInternalFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(
                     null,
-                    "Erro GuiLogin.restaurarPerfilComboBox " + e.getMessage());
+                    "Erro GuiCadastroConta.PreencherComboBoxCategoria " + e.getMessage());
         }//fim do try catch
         
     }//fim do método restaurarPerfilComboBox

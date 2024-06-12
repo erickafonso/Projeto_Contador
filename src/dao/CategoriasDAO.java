@@ -139,7 +139,7 @@ public class CategoriasDAO {
         try {
             String sql;
             sql = "Update categoria set "
-                    + "nome = ' " + cVO.getNome() + " ' "
+                    + "nome = '" + cVO.getNome() + "' "
 
                     + " where idCategoria= " + cVO.getIdCategoria() + " ;";
 

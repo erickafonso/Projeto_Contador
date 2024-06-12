@@ -137,7 +137,7 @@ public class DespesasDAO {
         try {
             String sql;
             sql = "Update despesa set "
-                    + "nome = ' " + dVO.getNome() + " ', "
+                    + "nome = '" + dVO.getNome() + "', "
                     + "valor = " + dVO.getValor() + ", "
                     + "descricao = ' " + dVO.getDescricao() + "', "
                     + "dataPagamento = '" + sqlDate + "', "

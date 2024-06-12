@@ -265,11 +265,11 @@ public class GUIcadastroDespesa extends javax.swing.JInternalFrame {
             //Retorno para o usuário
             JOptionPane.showMessageDialog(
                     null,
-                    "Forma de Pagamento Cadastrado com sucesso! ");
+                    "Despesa Cadastrada com sucesso! ");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(
                     null,
-                    "Erro! GUICadastroConta " + e.getMessage());
+                    "Erro! GUICadastroDespesa " + e.getMessage());
         }//fecha o try catch
 
     }//fim do método cadastrar
@@ -308,7 +308,7 @@ public class GUIcadastroDespesa extends javax.swing.JInternalFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(
                     null,
-                    "Erro GuiLogin.restaurarPerfilComboBox " + e.getMessage());
+                    "Erro GUICadastroDespesa.PreencherComboBoxFormaPagamento " + e.getMessage());
         }//fim do try catch
         
     }//fim do método restaurarPerfilComboBox
@@ -328,7 +328,7 @@ public class GUIcadastroDespesa extends javax.swing.JInternalFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(
                     null,
-                    "Erro GuiLogin.restaurarPerfilComboBox " + e.getMessage());
+                    "Erro GUICadastroDespesa.PreencherComboBoxCategoria " + e.getMessage());
         }//fim do try catch
         
     }//fim do método restaurarPerfilComboBox
