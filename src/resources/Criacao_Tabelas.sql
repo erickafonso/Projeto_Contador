@@ -28,7 +28,7 @@ primary key (Categoria, Conta),
 foreign key (Categoria) references categoria(idCategoria),
 foreign key (Conta) references conta(idConta)
 );
-drop table Conta_Categoria;
+
 
 create table Despesa_FormaPagamento (
 FormaPagamento int not null,
@@ -37,8 +37,7 @@ primary key (FormaPagamento, Despesa),
 foreign key (FormaPagamento) references formaPagamento(idFormaPagamento),
 foreign key (Despesa) references despesa(idDespesa)
 );
-drop table Despesa_FormaPagamento;
-drop table Despesa_Categoria;
+
 
 create table Despesa_Categoria (
 Categoria int not null,
@@ -85,30 +84,4 @@ email varChar(30)  not null,
 senha varBinary(18)  not null
 );
 
-select * from formaPagamento order by nome;
 
-delete from categoria where idCategoria =3;
-select * from formapagamento;
-drop table conta;
-INSERT INTO categoria(idCategoria, nome) values (
-0, "sem categoria"
-);
-INSERT INTO categoria(idCategoria, nome) values (
-0, "carro"
-);
-INSERT INTO formaPagamento(idFormaPagamento, nome) values (
-0, "sem categoria"
-);
-INSERT INTO formaPagamento(idFormaPagamento, nome) values (
-0, "cartao"
-);
-
-
-
-
-describe conta;
-select * from categoria;
-select * from formapagamento;
-select * from conta;
-Select * from despesa;
-delete from despesa where categoria=0;
