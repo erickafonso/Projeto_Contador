@@ -3,18 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/182310022/Documents/NetBeansProjects/Carteira/src/dao/CategoriasDAO.java</file>
-            <file>file:/C:/Users/182310022/Documents/NetBeansProjects/Carteira/src/utilidades/Conversao.java</file>
-            <file>file:/C:/Users/182310022/Documents/NetBeansProjects/Carteira/src/view/GuiCadastroUsuarioB.java</file>
             <file>file:/C:/Users/182310022/Documents/NetBeansProjects/Carteira/src/view/GUIcadastroContas.java</file>
-            <file>file:/C:/Users/182310022/Documents/NetBeansProjects/Carteira/src/dao/ContasDAO.java</file>
-            <file>file:/C:/Users/182310022/Documents/NetBeansProjects/Carteira/src/view/GUIcadastroCategoria.java</file>
-            <file>file:/C:/Users/182310022/Documents/NetBeansProjects/Carteira/src/view/GUIcadastroUsuario.java</file>
-            <file>file:/C:/Users/182310022/Documents/NetBeansProjects/Carteira/src/view/GUItelaInicial.java</file>
-            <file>file:/C:/Users/182310022/Documents/NetBeansProjects/Carteira/src/dao/DespesasDAO.java</file>
-            <file>file:/C:/Users/182310022/Documents/NetBeansProjects/Carteira/src/view/GUIlogin.java</file>
-            <file>file:/C:/Users/182310022/Documents/NetBeansProjects/Carteira/src/modelo/UsuariosVO.java</file>
-            <file>file:/C:/Users/182310022/Documents/NetBeansProjects/Carteira/src/persistencia/ConexaoBanco.java</file>
         </group>
     </open-files>
 </project-private>
