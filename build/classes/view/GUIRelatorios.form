@@ -344,7 +344,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfDataPagamentoAteActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try{&#xa;jtfDataPagamentoDe.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(&quot;##/##/####&quot;)));&#xa; &#xa;        }catch(ParseException ex){&#xa;            JOptionPane.showMessageDialog(this, &quot;Ocorreu um erro na cria&#xe7;&#xe3;o da m&#xe1;scara!&quot;);&#xa;        }"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try{&#xa;jtfDataPagamentoAte.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(&quot;##/##/####&quot;)));&#xa; &#xa;        }catch(ParseException ex){&#xa;            JOptionPane.showMessageDialog(this, &quot;Ocorreu um erro na cria&#xe7;&#xe3;o da m&#xe1;scara!&quot;);&#xa;        }"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">
@@ -486,14 +486,14 @@
                           <EmptySpace min="-2" pref="170" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jtfDataPagamentoConta5" min="-2" pref="125" max="-2" attributes="0"/>
+                                  <Component id="jtfDataVencimentoAte" min="-2" pref="125" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel18" min="-2" pref="82" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jtfDataPagamentoConta4" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
+                                      <Component id="jtfDataVencimentoDe" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
                                       <Component id="jLabel19" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -503,7 +503,7 @@
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
-                                          <Component id="jCheckBox2" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jcbDtVenci" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -525,7 +525,7 @@
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jtfDataPagamentoConta4" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="jtfDataVencimentoDe" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                               <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -534,12 +534,12 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jCheckBox2" min="-2" max="-2" attributes="0"/>
+                          <Component id="jcbDtVenci" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jtfDataPagamentoConta5" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                      <Component id="jtfDataVencimentoAte" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                       <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -557,15 +557,15 @@
             <Property name="text" type="java.lang.String" value="DE:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jtfDataPagamentoConta4">
+        <Component class="javax.swing.JFormattedTextField" name="jtfDataVencimentoDe">
           <Properties>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfDataPagamentoConta4ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfDataVencimentoDeActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try{&#xa;jtfDataPagamentoDe.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(&quot;##/##/####&quot;)));&#xa; &#xa;        }catch(ParseException ex){&#xa;            JOptionPane.showMessageDialog(this, &quot;Ocorreu um erro na cria&#xe7;&#xe3;o da m&#xe1;scara!&quot;);&#xa;        }"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try{&#xa;jtfDataVencimentoDe.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(&quot;##/##/####&quot;)));&#xa; &#xa;        }catch(ParseException ex){&#xa;            JOptionPane.showMessageDialog(this, &quot;Ocorreu um erro na cria&#xe7;&#xe3;o da m&#xe1;scara!&quot;);&#xa;        }"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel17">
@@ -578,15 +578,15 @@
             <Property name="text" type="java.lang.String" value="DD/MM/AAAA"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jtfDataPagamentoConta5">
+        <Component class="javax.swing.JFormattedTextField" name="jtfDataVencimentoAte">
           <Properties>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfDataPagamentoConta5ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfDataVencimentoAteActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try{&#xa;jtfDataPagamentoDe.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(&quot;##/##/####&quot;)));&#xa; &#xa;        }catch(ParseException ex){&#xa;            JOptionPane.showMessageDialog(this, &quot;Ocorreu um erro na cria&#xe7;&#xe3;o da m&#xe1;scara!&quot;);&#xa;        }"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try{&#xa;jtfDataVencimentoAte.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(&quot;##/##/####&quot;)));&#xa; &#xa;        }catch(ParseException ex){&#xa;            JOptionPane.showMessageDialog(this, &quot;Ocorreu um erro na cria&#xe7;&#xe3;o da m&#xe1;scara!&quot;);&#xa;        }"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel19">
@@ -594,12 +594,12 @@
             <Property name="text" type="java.lang.String" value="AT&#xc9;:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox2">
+        <Component class="javax.swing.JCheckBox" name="jcbDtVenci">
           <Properties>
             <Property name="text" type="java.lang.String" value="Todo per&#xed;odo"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbDtVenciActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

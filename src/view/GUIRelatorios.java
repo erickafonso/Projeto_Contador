@@ -76,12 +76,12 @@ public class GUIRelatorios extends javax.swing.JInternalFrame {
         jLayeredPane7 = new javax.swing.JLayeredPane();
         jLabel7 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jtfDataPagamentoConta4 = new javax.swing.JFormattedTextField();
+        jtfDataVencimentoDe = new javax.swing.JFormattedTextField();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jtfDataPagamentoConta5 = new javax.swing.JFormattedTextField();
+        jtfDataVencimentoAte = new javax.swing.JFormattedTextField();
         jLabel19 = new javax.swing.JLabel();
-        jCheckBox2 = new javax.swing.JCheckBox();
+        jcbDtVenci = new javax.swing.JCheckBox();
         jLayeredPane2 = new javax.swing.JLayeredPane();
 
         setClosable(true);
@@ -218,7 +218,7 @@ public class GUIRelatorios extends javax.swing.JInternalFrame {
         jLabel9.setText("DD/MM/AAAA");
 
         try{
-            jtfDataPagamentoDe.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            jtfDataPagamentoAte.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
 
         }catch(ParseException ex){
             JOptionPane.showMessageDialog(this, "Ocorreu um erro na criação da máscara!");
@@ -373,15 +373,15 @@ public class GUIRelatorios extends javax.swing.JInternalFrame {
         jLabel16.setText("DE:");
 
         try{
-            jtfDataPagamentoDe.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            jtfDataVencimentoDe.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
 
         }catch(ParseException ex){
             JOptionPane.showMessageDialog(this, "Ocorreu um erro na criação da máscara!");
         }
-        jtfDataPagamentoConta4.setToolTipText("");
-        jtfDataPagamentoConta4.addActionListener(new java.awt.event.ActionListener() {
+        jtfDataVencimentoDe.setToolTipText("");
+        jtfDataVencimentoDe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfDataPagamentoConta4ActionPerformed(evt);
+                jtfDataVencimentoDeActionPerformed(evt);
             }
         });
 
@@ -390,35 +390,35 @@ public class GUIRelatorios extends javax.swing.JInternalFrame {
         jLabel18.setText("DD/MM/AAAA");
 
         try{
-            jtfDataPagamentoDe.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            jtfDataVencimentoAte.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
 
         }catch(ParseException ex){
             JOptionPane.showMessageDialog(this, "Ocorreu um erro na criação da máscara!");
         }
-        jtfDataPagamentoConta5.setToolTipText("");
-        jtfDataPagamentoConta5.addActionListener(new java.awt.event.ActionListener() {
+        jtfDataVencimentoAte.setToolTipText("");
+        jtfDataVencimentoAte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfDataPagamentoConta5ActionPerformed(evt);
+                jtfDataVencimentoAteActionPerformed(evt);
             }
         });
 
         jLabel19.setText("ATÉ:");
 
-        jCheckBox2.setText("Todo período");
-        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+        jcbDtVenci.setText("Todo período");
+        jcbDtVenci.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox2ActionPerformed(evt);
+                jcbDtVenciActionPerformed(evt);
             }
         });
 
         jLayeredPane7.setLayer(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane7.setLayer(jLabel16, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane7.setLayer(jtfDataPagamentoConta4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane7.setLayer(jtfDataVencimentoDe, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane7.setLayer(jLabel17, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane7.setLayer(jLabel18, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane7.setLayer(jtfDataPagamentoConta5, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane7.setLayer(jtfDataVencimentoAte, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane7.setLayer(jLabel19, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane7.setLayer(jCheckBox2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane7.setLayer(jcbDtVenci, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane7Layout = new javax.swing.GroupLayout(jLayeredPane7);
         jLayeredPane7.setLayout(jLayeredPane7Layout);
@@ -433,13 +433,13 @@ public class GUIRelatorios extends javax.swing.JInternalFrame {
                         .addGap(170, 170, 170)
                         .addGroup(jLayeredPane7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jLayeredPane7Layout.createSequentialGroup()
-                                .addComponent(jtfDataPagamentoConta5, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jtfDataVencimentoAte, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel16)
                             .addGroup(jLayeredPane7Layout.createSequentialGroup()
                                 .addGroup(jLayeredPane7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtfDataPagamentoConta4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jtfDataVencimentoDe, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel19))
                                 .addGroup(jLayeredPane7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jLayeredPane7Layout.createSequentialGroup()
@@ -447,7 +447,7 @@ public class GUIRelatorios extends javax.swing.JInternalFrame {
                                         .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jLayeredPane7Layout.createSequentialGroup()
                                         .addGap(100, 100, 100)
-                                        .addComponent(jCheckBox2)))))))
+                                        .addComponent(jcbDtVenci)))))))
                 .addContainerGap(54, Short.MAX_VALUE))
         );
         jLayeredPane7Layout.setVerticalGroup(
@@ -461,17 +461,17 @@ public class GUIRelatorios extends javax.swing.JInternalFrame {
                     .addGroup(jLayeredPane7Layout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addGroup(jLayeredPane7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jtfDataPagamentoConta4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfDataVencimentoDe, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel17))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel19)
                         .addGap(1, 1, 1))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane7Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox2)
+                        .addComponent(jcbDtVenci)
                         .addGap(5, 5, 5)))
                 .addGroup(jLayeredPane7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfDataPagamentoConta5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfDataVencimentoAte, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18)))
         );
 
@@ -551,24 +551,35 @@ public class GUIRelatorios extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfDataPagamentoAteActionPerformed
 
-    private void jtfDataPagamentoConta4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfDataPagamentoConta4ActionPerformed
+    private void jtfDataVencimentoDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfDataVencimentoDeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtfDataPagamentoConta4ActionPerformed
+    }//GEN-LAST:event_jtfDataVencimentoDeActionPerformed
 
-    private void jtfDataPagamentoConta5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfDataPagamentoConta5ActionPerformed
+    private void jtfDataVencimentoAteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfDataVencimentoAteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtfDataPagamentoConta5ActionPerformed
+    }//GEN-LAST:event_jtfDataVencimentoAteActionPerformed
 
     private void jcbDtPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbDtPagActionPerformed
            if (jcbDtPag.isSelected()) {
                jtfDataPagamentoDe.setEnabled(false);
+               jtfDataPagamentoAte.setEnabled(false);
+           }
+           else{
+               jtfDataPagamentoDe.setEnabled(true);
+               jtfDataPagamentoAte.setEnabled(true);
            }
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbDtPagActionPerformed
 
-    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox2ActionPerformed
+    private void jcbDtVenciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbDtVenciActionPerformed
+        if (jcbDtVenci.isSelected()) {
+            jtfDataVencimentoDe.setEnabled(false);
+            jtfDataVencimentoAte.setEnabled(false);
+        } else {
+            jtfDataVencimentoDe.setEnabled(true);
+            jtfDataVencimentoAte.setEnabled(true);
+        }
+    }//GEN-LAST:event_jcbDtVenciActionPerformed
 
      //Métodos Criados Manualmente
     private void preencherTabela(){
@@ -727,7 +738,6 @@ public class GUIRelatorios extends javax.swing.JInternalFrame {
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
-    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -756,12 +766,13 @@ public class GUIRelatorios extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbtnConfirmarAlteracao;
     private javax.swing.JComboBox<String> jcbCategoriaConta;
     private javax.swing.JCheckBox jcbDtPag;
+    private javax.swing.JCheckBox jcbDtVenci;
     private javax.swing.JComboBox<String> jcbFormaPagamentoConta;
     private javax.swing.JTextField jtfCodigo;
     private javax.swing.JFormattedTextField jtfDataPagamentoAte;
-    private javax.swing.JFormattedTextField jtfDataPagamentoConta4;
-    private javax.swing.JFormattedTextField jtfDataPagamentoConta5;
     private javax.swing.JFormattedTextField jtfDataPagamentoDe;
+    private javax.swing.JFormattedTextField jtfDataVencimentoAte;
+    private javax.swing.JFormattedTextField jtfDataVencimentoDe;
     private javax.swing.JTextField jtfNome;
     // End of variables declaration//GEN-END:variables
 }
